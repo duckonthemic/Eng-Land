@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ColorModeToggle from './ColorModeToggle';
+import { useEffect, useState } from 'react';
+
+
 
 export default function Navbar() {
   return (

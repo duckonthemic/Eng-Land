@@ -1,48 +1,240 @@
 // pages/about.js
 import Link from 'next/link';
+import Head from 'next/head';
+import Image from 'next/image';
+import Card from '../components/Card'; // Đảm bảo bạn đã tạo component Card như hướng dẫn trước đó
 
 export default function About() {
   return (
-    <div className="container mx-auto px-6 py-12 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-center text-primary-dark-green mb-8">
-          Về Chúng Tôi
-        </h1>
-
-        <p className="text-lg text-gray-800 mb-6">
-          Eng Land là nền tảng học tiếng Anh trực tuyến giúp bạn nâng cao kỹ năng ngôn ngữ của mình một cách hiệu quả và linh hoạt. Chúng tôi tin rằng ai cũng có thể học tiếng Anh và cải thiện khả năng giao tiếp quốc tế của mình, bất kể ở đâu và khi nào.
-        </p>
-
-        <p className="text-lg text-gray-800 mb-6">
-          Với các khóa học chất lượng, từ cơ bản đến nâng cao, chúng tôi cung cấp các bài học thực tiễn, bài tập thú vị và kiểm tra định kỳ để đảm bảo bạn có thể phát triển tốt nhất. Ngoài ra, chúng tôi còn có những giáo viên và chuyên gia nhiệt tình hỗ trợ bạn trong quá trình học.
-        </p>
-
-        <div className="mb-8">
-          <h2 className="text-3xl font-semibold text-primary-dark-green mb-4">Sứ Mệnh Của Chúng Tôi</h2>
-          <p className="text-lg text-gray-700 mb-4">
-            Chúng tôi mong muốn mang lại kiến thức tiếng Anh cho mọi người một cách dễ dàng, thú vị, và không giới hạn. Eng Land cam kết mang đến một nền giáo dục chất lượng, giúp người học tự tin sử dụng tiếng Anh trong cuộc sống và công việc.
-          </p>
+    <>
+      <Head>
+        <title>Về Chúng Tôi | Eng Land</title>
+        <meta
+          name="description"
+          content="Eng Land là nền tảng học tiếng Anh trực tuyến giúp bạn nâng cao kỹ năng ngôn ngữ của mình một cách hiệu quả và linh hoạt."
+        />
+        <meta property="og:title" content="Về Chúng Tôi | Eng Land" />
+        <meta
+          property="og:description"
+          content="Eng Land là nền tảng học tiếng Anh trực tuyến giúp bạn nâng cao kỹ năng ngôn ngữ của mình một cách hiệu quả và linh hoạt."
+        />
+        <meta property="og:image" content="/images/england-og-image.jpg" />
+        <meta property="og:url" content="https://england.example.com/about" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
+      
+      <main className="container mx-auto px-6 py-12 bg-white text-black transition-colors duration-300">
+        <div className="max-w-5xl mx-auto">
+          {/* Header Section */}
+          <section className="text-center mb-12 animate-fade-in">
+            <h1 className="text-7xl font-extrabold text-primary-dark-green mb-4 transform transition-transform duration-300 hover:scale-105">
+              Về Eng Land
+            </h1>
+            <p className="text-lg">
+              Eng Land là nền tảng học tiếng Anh trực tuyến hàng đầu, mang đến cho bạn những công cụ và tài nguyên cần thiết để nâng cao kỹ năng ngôn ngữ một cách hiệu quả và linh hoạt.
+            </p>
+          </section>
+          
+          {/* Trust Indicators */}
+          <section className="mb-12 animate-fade-in">
+            <h2 className="text-4xl font-semibold text-primary-dark-green mb-6 text-center">
+              Độ Uy Tín của Chúng Tôi
+            </h2>
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/images/award.jpg" 
+                  alt="Award"
+                  width={100}
+                  height={100}
+                  className="rounded-lg shadow-md object-cover transition-transform duration-300 hover:rotate-6"
+                />
+                <p className="mt-2 text-lg font-medium text-black">
+                  Giải thưởng giáo dục 2023
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/images/user.jpg"
+                  alt="Users"
+                  width={100}
+                  height={100}
+                  className="rounded-lg shadow-md object-cover transition-transform duration-300 hover:rotate-6"
+                />
+                <p className="mt-2 text-lg font-medium text-black">
+                  +10,000 người dùng hài lòng
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/images/certificate.jpg"
+                  alt="Certification"
+                  width={100}
+                  height={100}
+                  className="rounded-lg shadow-md object-cover transition-transform duration-300 hover:rotate-6"
+                />
+                <p className="mt-2 text-lg font-medium text-black">
+                  Chứng nhận ISO 9001
+                </p>
+              </div>
+            </div>
+          </section>
+          
+          {/* Mission Section */}
+          <section className="mb-12 animate-fade-in">
+            <h2 className="text-4xl font-semibold text-primary-dark-green mb-4 text-center">
+              Sứ Mệnh Của Chúng Tôi
+            </h2>
+            <p className="text-lg mb-6">
+              Chúng tôi cam kết cung cấp một nền tảng học tiếng Anh chất lượng cao, giúp người học tự tin giao tiếp quốc tế, mở rộng cơ hội nghề nghiệp và kết nối toàn cầu.
+            </p>
+            <div className="flex flex-col md:flex-row items-center md:space-x-4">
+              <div className="md:w-1/2 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/images/mission.WEBP" // Thay bằng hình ảnh thực tế
+                  alt="Mission"
+                  width={350}
+                  height={240}
+                  className="rounded-lg shadow-md object-cover"
+                />
+              </div>
+              <div className="md:w-1/2 mt-6 md:mt-0">
+                <ul className="list-disc pl-5 space-y-3 text-black text-xl">
+                  <li>Phát triển các khóa học linh hoạt và cập nhật liên tục.</li>
+                  <li>Tạo ra môi trường học tập tương tác và thú vị.</li>
+                  <li>Hỗ trợ học viên qua các kênh liên lạc đa dạng.</li>
+                  <li>Giúp học viên tiếp cận với giáo viên nước người giàu kinh nghiệm.</li>
+                  <li>Không chỉ là học, học viên sẽ được tiếp xúc với nhiều phương pháp học tập khác nhau từ nhiều quốc gia.</li>
+                  <li>Đảm bảo chất lượng giảng dạy thông qua đội ngũ chuyên gia trong và ngoài nước.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          
+          {/* Hypothetical Articles Section */}
+          <section className="mb-12 animate-fade-in">
+            <h2 className="text-4xl font-semibold text-primary-dark-green mb-6 text-center">
+              Các Bài Báo Nổi Bật
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card
+                image="/images/article1.jpg"
+                title="Lợi Ích Của Việc Học Tiếng Anh Trực Tuyến"
+                description="Khám phá những lợi ích vượt trội của việc học tiếng Anh trực tuyến và cách nó có thể giúp bạn tiến xa hơn trong sự nghiệp và cuộc sống cá nhân."
+                link="/articles/benefits-of-online-learning"
+              />
+              <Card
+                image="/images/article2.jpg"
+                title="Cách Tối Ưu Hóa Học Tiếng Anh Hàng Ngày"
+                description="Những chiến lược hiệu quả để tích hợp việc học tiếng Anh vào thói quen hàng ngày của bạn một cách tự nhiên và bền vững."
+                link="/articles/optimizing-daily-learning"
+              />
+              <Card
+                image="/images/article3.jpg"
+                title="Thành Công Của Học Viên Eng Land"
+                description="Câu chuyện về những học viên đã đạt được thành tựu vượt trội nhờ chương trình học tiếng Anh của Eng Land."
+                link="/articles/success-stories"
+              />
+            </div>
+          </section>
+          
+          {/* Testimonials Section */}
+          <section className="mb-12 animate-fade-in">
+            <h2 className="text-4xl font-semibold text-primary-dark-green mb-6 text-center">
+              Phản hồi của học viên
+            </h2>
+            <div className="space-y-8">
+              <div className="flex items-center space-x-4">
+                <Image
+                  src="/images/student1.jpg" // Thay bằng hình ảnh thực tế
+                  alt="Student 1"
+                  width={80}
+                  height={80}
+                  className="rounded-full object-cover"
+                />
+                <div>
+                  <p className="text-lg">
+                    "Eng Land đã giúp tôi cải thiện kỹ năng tiếng Anh một cách đáng kể. Thầy cô nhiệt tình và quan tâm đến học sinh kể cả học online"
+                  </p>
+                  <p className="mt-2 font-semibold">
+                    - Võ Duy Thịnh
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <Image
+                  src="/images/student2.png" // Thay bằng hình ảnh thực tế
+                  alt="Student 2"
+                  width={80}
+                  height={80}
+                  className="rounded-full object-cover"
+                />
+                <div>
+                  <p className="text-lg">
+                    "Nhờ Eng Land, tôi đã tự tin giao tiếp bằng tiếng Anh trong môi trường làm việc quốc tế. Tham gia vào thị trường anime quốc tế một cách thoải mái"
+                  </p>
+                  <p className="mt-2 font-semibold">
+                    - Lương Tuấn Vỹ - Wjpu lỏ
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <Image
+                  src="/images/student3.jpg" // Thay bằng hình ảnh thực tế
+                  alt="Student 3"
+                  width={80}
+                  height={80}
+                  className="rounded-full object-cover"
+                />
+                <div>
+                  <p className="text-lg">
+                    "Các khóa học linh hoạt và hỗ trợ từ giáo viên đã giúp em học tiếng Anh hiệu quả hơn. Qua đây, em đã có nhiều trải nghiệm với giáo viên trong và ngoài nước, đồng thời còn tiếp thu được văn hóa học tập của các giáo viên nước ngoài"
+                  </p>
+                  <p className="mt-2 font-semibold">
+                    - Hoàng Bảo Long
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {/* Statistics Section */}
+          <section className="mb-12 animate-fade-in">
+            <h2 className="text-3xl font-semibold text-primary-dark-green mb-6 text-center">
+              Số Liệu Đáng Kể
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-center">
+              <div>
+                <p className="text-4xl font-bold text-primary-light-green">10,000+</p>
+                <p>Học viên</p>
+              </div>
+              <div>
+                <p className="text-4xl font-bold text-primary-light-green">5+</p>
+                <p>Năm kinh nghiệm</p>
+              </div>
+              <div>
+                <p className="text-4xl font-bold text-primary-light-green">100%</p>
+                <p>Học viên hài lòng</p>
+              </div>
+            </div>
+          </section>
+          
+          {/* Call to Action */}
+          <section className="text-center animate-fade-in">
+            <h2 className="text-4xl font-semibold text-primary-dark-green mb-4">
+              Bắt Đầu Học Tiếng Anh Ngay Hôm Nay!
+            </h2>
+            <p className="text-lg mb-6">
+              Tham gia cộng đồng học viên Eng Land và trải nghiệm phương pháp học tiếng Anh hiệu quả nhất.
+            </p>
+            <Link href="/signup" className="bg-primary-light-green text-green py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark-green hover:text-green transition-colors duration-300">
+              Đăng ký ngay hôm nay để nhận ưu đãi 
+            </Link>
+          </section>
         </div>
-
-        <div className="mb-8">
-          <h2 className="text-3xl font-semibold text-primary-dark-green mb-4">Giá Trị Cốt Lõi</h2>
-          <ul className="list-disc pl-5 space-y-3 text-lg text-gray-700">
-            <li>Tính linh hoạt: Học mọi lúc, mọi nơi, phù hợp với thời gian biểu của bạn.</li>
-            <li>Tương tác cao: Các bài học và bài kiểm tra được thiết kế để thúc đẩy sự tương tác và thực hành liên tục.</li>
-            <li>Chất lượng: Đội ngũ giáo viên chuyên nghiệp và nội dung học tập được nghiên cứu và kiểm duyệt kỹ lưỡng.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-3xl font-semibold text-primary-dark-green mb-4">Liên Hệ Với Chúng Tôi</h2>
-          <p className="text-lg text-gray-700 mb-4">
-            Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, hãy{' '}
-            <Link href="/contact" className="text-green-500 hover:underline font-semibold">
-              liên hệ với chúng tôi
-            </Link>. Chúng tôi luôn sẵn lòng hỗ trợ bạn trên hành trình học tập.
-          </p>
-        </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
