@@ -1,0 +1,15 @@
+/* navbar.css */
+.navbar {
+  background-color: var(--primary-dark-green);
+  color: var(--neutral-light);
+  padding: 1rem;
+}
+
+.navbar a {
+  color: var(--neutral-light);
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--primary-light-green);
+}
