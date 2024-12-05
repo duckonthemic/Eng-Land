@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Thêm các lớp tùy chỉnh */
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
 :root {
     --background-color: #ffffff;
     --text-color: #000000;

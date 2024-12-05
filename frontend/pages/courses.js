@@ -1,6 +1,7 @@
 // pages/courses.js
 import { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import CourseCard from '../components/CourseCard';
 import coursesData from '../data/courses';
 import Footer from '../components/Footer';
@@ -34,14 +35,20 @@ export default function Courses() {
 
       <main className="container mx-auto px-6 py-12 bg-white text-black transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
-          <section className="text-center mb-12 animate-fade-in">
-            <h1 className="text-7xl font-extrabold text-primary-dark-green mb-4 transform transition-transform duration-300 hover:scale-105">
-              Khóa Học của Chúng Tôi
-            </h1>
-            <p className="text-lg">
-              Eng Land cung cấp các khóa học tiếng Anh đa dạng, phù hợp với mọi nhu cầu và trình độ của bạn.
-            </p>
+          {/* Banner Section */}
+          <section className="mb-12 relative h-64">
+            <Image
+              src="/images/courses/banner.jpg" // Đảm bảo bạn có hình ảnh này
+              alt="Khóa Học Eng Land"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg shadow-md"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <h1 className="text-5xl font-extrabold text-white">
+                Khóa Học của Chúng Tôi
+              </h1>
+            </div>
           </section>
 
           {/* Search and Filters */}

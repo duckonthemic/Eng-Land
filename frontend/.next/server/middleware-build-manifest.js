@@ -10,11 +10,6 @@ self.__BUILD_MANIFEST = {
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -30,15 +25,55 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/about.js"
     ],
-    "/privacy-policy": [
+    "/consult": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/privacy-policy.js"
+      "static/chunks/pages/consult.js"
     ],
-    "/terms": [
+    "/courses": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/terms.js"
+      "static/chunks/pages/courses.js"
+    ],
+    "/courses/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/courses/[id].js"
+    ],
+    "/selfstudy": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy.js"
+    ],
+    "/selfstudy/dictionary": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy/dictionary.js"
+    ],
+    "/selfstudy/grammar": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy/grammar.js"
+    ],
+    "/selfstudy/grammar/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy/grammar/[id].js"
+    ],
+    "/selfstudy/vocabulary/flashcards": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy/vocabulary/flashcards.js"
+    ],
+    "/selfstudy/vocabulary/topics": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy/vocabulary/topics.js"
+    ],
+    "/test": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/test.js"
     ]
   },
   "ampFirstPages": []
