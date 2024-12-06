@@ -2,14 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/selfstudy": "pages/selfstudy.js",
-  "/selfstudy/grammar": "pages/selfstudy/grammar.js",
-  "/selfstudy/vocabulary/topics": "pages/selfstudy/vocabulary/topics.js",
-  "/selfstudy/grammar/[id]": "pages/selfstudy/grammar/[id].js",
-  "/selfstudy/dictionary": "pages/selfstudy/dictionary.js",
-  "/about": "pages/about.js",
+  "/": "pages/index.js",
+  "/login": "pages/login.js",
+  "/signup": "pages/signup.js",
+  "/cart": "pages/cart.js",
   "/courses": "pages/courses.js",
-  "/courses/[id]": "pages/courses/[id].js",
-  "/consult": "pages/consult.js",
-  "/test": "pages/test.js"
+  "/user": "pages/user.js",
+  "/payment": "pages/payment.js"
 }

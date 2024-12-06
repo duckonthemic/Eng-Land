@@ -13,6 +13,11 @@
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -23,60 +28,35 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/about": [
+    "/cart": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/about.js"
-    ],
-    "/consult": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/consult.js"
+      "static/chunks/pages/cart.js"
     ],
     "/courses": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/courses.js"
     ],
-    "/courses/[id]": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/courses/[id].js"
+      "static/chunks/pages/login.js"
     ],
-    "/selfstudy": [
+    "/payment": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/selfstudy.js"
+      "static/chunks/pages/payment.js"
     ],
-    "/selfstudy/dictionary": [
+    "/signup": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/selfstudy/dictionary.js"
+      "static/chunks/pages/signup.js"
     ],
-    "/selfstudy/grammar": [
+    "/user": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/selfstudy/grammar.js"
-    ],
-    "/selfstudy/grammar/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/selfstudy/grammar/[id].js"
-    ],
-    "/selfstudy/vocabulary/flashcards": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/selfstudy/vocabulary/flashcards.js"
-    ],
-    "/selfstudy/vocabulary/topics": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/selfstudy/vocabulary/topics.js"
-    ],
-    "/test": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/test.js"
+      "static/chunks/pages/user.js"
     ]
   },
   "ampFirstPages": []
