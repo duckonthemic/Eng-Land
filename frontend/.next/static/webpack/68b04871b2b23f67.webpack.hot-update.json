@@ -1,0 +1,1 @@
+{"c":["pages/news","webpack"],"r":["pages/courses"],"m":["./components/CourseCard.js","./data/courses.js","./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=D%3A%5Chacker%5CIE104%20web%5CEng-Land%5Cfrontend%5Cpages%5Ccourses.js&page=%2Fcourses!","./node_modules/next/head.js","./pages/courses.js"]}
