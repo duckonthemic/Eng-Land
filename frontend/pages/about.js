@@ -121,19 +121,19 @@ export default function About() {
                 image="/images/article1.jpg"
                 title="Lợi Ích Của Việc Học Tiếng Anh Trực Tuyến"
                 description="Khám phá những lợi ích vượt trội của việc học tiếng Anh trực tuyến và cách nó có thể giúp bạn tiến xa hơn trong sự nghiệp và cuộc sống cá nhân."
-                link="/articles/benefits-of-online-learning"
+                link="/articles/1"
               />
               <Card
                 image="/images/article2.jpg"
                 title="Cách Tối Ưu Hóa Học Tiếng Anh Hàng Ngày"
                 description="Những chiến lược hiệu quả để tích hợp việc học tiếng Anh vào thói quen hàng ngày của bạn một cách tự nhiên và bền vững."
-                link="/articles/optimizing-daily-learning"
+                link="/articles/2"
               />
               <Card
                 image="/images/article3.jpg"
                 title="Thành Công Của Học Viên Eng Land"
                 description="Câu chuyện về những học viên đã đạt được thành tựu vượt trội nhờ chương trình học tiếng Anh của Eng Land."
-                link="/articles/success-stories"
+                link="/articles/3"
               />
             </div>
           </section>
@@ -157,7 +157,7 @@ export default function About() {
                     "Eng Land đã giúp tôi cải thiện kỹ năng tiếng Anh một cách đáng kể. Thầy cô nhiệt tình và quan tâm đến học sinh kể cả học online"
                   </p>
                   <p className="mt-2 font-semibold">
-                    - Võ Duy Thịnh
+                    - Võ Duy Thịnh - siêu đẹp trai
                   </p>
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function About() {
                     "Các khóa học linh hoạt và hỗ trợ từ giáo viên đã giúp em học tiếng Anh hiệu quả hơn. Qua đây, em đã có nhiều trải nghiệm với giáo viên trong và ngoài nước, đồng thời còn tiếp thu được văn hóa học tập của các giáo viên nước ngoài"
                   </p>
                   <p className="mt-2 font-semibold">
-                    - Hoàng Bảo Long
+                    - Hoàng Bảo Long -
                   </p>
                 </div>
               </div>

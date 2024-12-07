@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/selfstudy": "pages/selfstudy.js",
-  "/news": "pages/news.js",
-  "/courses": "pages/courses.js"
+  "/news/[id]": "pages/news/[id].js",
+  "/news": "pages/news.js"
 }

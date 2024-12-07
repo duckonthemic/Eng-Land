@@ -10,6 +10,7 @@ export default function Courses() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [message, setMessage] = useState('');
 
   // Lọc khóa học dựa trên tìm kiếm và các bộ lọc
   const filteredCourses = coursesData.filter((course) => {
@@ -19,9 +20,32 @@ export default function Courses() {
     return matchesSearch && matchesLevel && matchesCategory;
   });
 
-  // Lấy danh sách các mức độ và danh mục duy nhất từ dữ liệu khóa học
+  // Lấy danh sách các mức độ và danh mục duy nhất
   const levels = ['All', ...new Set(coursesData.map((course) => course.level))];
   const categories = ['All', ...new Set(coursesData.map((course) => course.category))];
+
+  const handleAddToCart = (course) => {
+    try {
+      let cart = [];
+      if (typeof window !== 'undefined') {
+        const cartStr = localStorage.getItem('cart');
+        if (cartStr) {
+          cart = JSON.parse(cartStr);
+        }
+        // Kiểm tra xem khóa học đã trong giỏ chưa
+        const exists = cart.find(item => item.id === course.id);
+        if (exists) {
+          setMessage('Khóa học đã có trong giỏ hàng.');
+          return;
+        }
+        cart.push(course);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        setMessage(`Đã thêm "${course.title}" vào giỏ hàng!`);
+      }
+    } catch (err) {
+      console.log('Lỗi khi thêm vào giỏ hàng:', err);
+    }
+  };
 
   return (
     <>
@@ -38,7 +62,7 @@ export default function Courses() {
           {/* Banner Section */}
           <section className="mb-12 relative h-64">
             <Image
-              src="/images/courses/banner.jpg" // Đảm bảo bạn có hình ảnh này
+              src="/images/courses/banner.jpg"
               alt="Khóa Học Eng Land"
               layout="fill"
               objectFit="cover"
@@ -91,12 +115,23 @@ export default function Courses() {
             </div>
           </section>
 
+          {/* Thông báo thêm vào giỏ hàng */}
+          {message && <p className="text-center text-green-600 font-bold mt-4">{message}</p>}
+
           {/* Courses List */}
-          <section className="animate-fade-in">
+          <section className="animate-fade-in mt-8">
             {filteredCourses.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} />
+                  <div key={course.id} className="relative p-4 bg-white rounded-lg shadow-md">
+                    <CourseCard course={course} />
+                    <button
+                      onClick={() => handleAddToCart(course)}
+                      className="mt-4 bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition"
+                    >
+                      Thêm vào giỏ hàng
+                    </button>
+                  </div>
                 ))}
               </div>
             ) : (
