@@ -27,10 +27,8 @@ export default function Consult() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Xử lý đăng ký (ví dụ: gửi dữ liệu đến API)
     console.log('Form submitted', formData);
     setIsSubmitted(true);
-    // Reset form
     setFormData({
       firstName: '',
       lastName: '',
@@ -46,8 +44,9 @@ export default function Consult() {
   return (
     <div className="container mx-auto px-6 py-12 flex flex-col lg:flex-row lg:space-x-12">
       {/* Thông tin giới thiệu */}
-      <div className="bg-primary-dark text-white p-8 rounded-lg shadow-lg lg:w-1/3 mb-8 lg:mb-0">
-        <h1 className="text-3xl font-bold mb-4">Liên hệ với đội ngũ của chúng tôi!</h1>
+      <div className="bg-green-800 text-gray-100 p-8 rounded-2xl shadow-md lg:w-1/3 mb-8 lg:mb-0 animate-fade-in">
+        <h1 className="text-3xl font-semibold mb-4">Liên hệ với đội ngũ của chúng tôi!</h1>
+        <img src="/images/contact-hero.jpg" alt="Liên hệ" className="rounded-lg mb-4 w-full" />
         <ul className="list-disc pl-5 space-y-2">
           <li>Thảo luận về nhu cầu học tiếng Anh của bạn.</li>
           <li>Tìm hiểu về các khóa học phù hợp với mục tiêu của bạn.</li>
@@ -57,7 +56,7 @@ export default function Consult() {
       </div>
 
       {/* Form Liên hệ */}
-      <div className="bg-white shadow-md rounded-lg p-8 lg:w-2/3">
+      <div className="bg-white shadow-lg rounded-2xl p-8 lg:w-2/3 animate-slide-in">
         {isSubmitted && (
           <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
             Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.
@@ -76,7 +75,7 @@ export default function Consult() {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+                className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
                 placeholder="Nhập họ của bạn"
                 required
               />
@@ -92,7 +91,7 @@ export default function Consult() {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+                className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
                 placeholder="Nhập tên của bạn"
                 required
               />
@@ -111,7 +110,7 @@ export default function Consult() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+                className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
                 placeholder="Nhập email của bạn"
                 required
               />
@@ -127,7 +126,7 @@ export default function Consult() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+                className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
                 placeholder="Nhập số điện thoại của bạn"
                 required
               />
@@ -145,7 +144,7 @@ export default function Consult() {
                 name="courseInterest"
                 value={formData.courseInterest}
                 onChange={handleChange}
-                className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+                className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
                 required
               >
                 <option value="">-- Chọn Khóa Học --</option>
@@ -153,7 +152,6 @@ export default function Consult() {
                 <option value="IELTS Nâng Cao">IELTS Nâng Cao</option>
                 <option value="Khóa Thi Toàn Diện">Khóa Thi Toàn Diện</option>
                 <option value="TOEIC">TOEIC</option>
-                {/* Thêm các khóa học khác nếu cần */}
               </select>
             </div>
 
@@ -166,7 +164,7 @@ export default function Consult() {
                 name="level"
                 value={formData.level}
                 onChange={handleChange}
-                className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+                className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
                 required
               >
                 <option value="">-- Chọn Mức Độ --</option>
@@ -187,7 +185,7 @@ export default function Consult() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary-light-green transition duration-200"
+              className="shadow-sm appearance-none border border-green-300 hover:border-green-500 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-300 transition duration-200"
               placeholder="Vui lòng cung cấp một số thông tin về mục tiêu hoặc những gì bạn đang cố gắng giải quyết"
               rows="4"
               required
@@ -202,7 +200,7 @@ export default function Consult() {
                 name="receiveCommunications"
                 checked={formData.receiveCommunications}
                 onChange={handleChange}
-                className="form-checkbox text-primary-light-green transition duration-200"
+                className="form-checkbox text-green-500 transition duration-200"
               />
               <span className="ml-2 text-gray-700">Tôi đồng ý nhận các thông tin liên lạc khác từ Eng Land</span>
             </label>
@@ -212,7 +210,7 @@ export default function Consult() {
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="flex items-center bg-primary-light-green hover:bg-primary-dark-green text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
+              className="flex items-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               Gửi
               <svg

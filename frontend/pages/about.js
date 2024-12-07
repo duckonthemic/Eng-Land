@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
-import Card from '../components/Card'; // Đảm bảo bạn đã tạo component Card như hướng dẫn trước đó
+import Card from '../components/Card';
 
 export default function About() {
   return (
@@ -24,74 +24,55 @@ export default function About() {
       </Head>
       
       <main className="container mx-auto px-6 py-12 bg-white text-black transition-colors duration-300">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto space-y-12">
+          
           {/* Header Section */}
-          <section className="text-center mb-12 animate-fade-in">
-            <h1 className="text-7xl font-extrabold text-primary-dark-green mb-4 transform transition-transform duration-300 hover:scale-105">
+          <section className="text-center animate-fade-in">
+            <h1 className="text-6xl md:text-7xl font-extrabold text-primary-dark-green mb-4 transform transition-transform hover:scale-105">
               Về Eng Land
             </h1>
-            <p className="text-lg">
+            <p className="text-lg md:text-xl">
               Eng Land là nền tảng học tiếng Anh trực tuyến hàng đầu, mang đến cho bạn những công cụ và tài nguyên cần thiết để nâng cao kỹ năng ngôn ngữ một cách hiệu quả và linh hoạt.
             </p>
           </section>
           
           {/* Trust Indicators */}
-          <section className="mb-12 animate-fade-in">
+          <section className="animate-fade-in">
             <h2 className="text-4xl font-semibold text-primary-dark-green mb-6 text-center">
               Độ Uy Tín của Chúng Tôi
             </h2>
             <div className="flex flex-wrap justify-center gap-8">
-              <div className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
-                <Image
-                  src="/images/award.jpg" 
-                  alt="Award"
-                  width={100}
-                  height={100}
-                  className="rounded-lg shadow-md object-cover transition-transform duration-300 hover:rotate-6"
-                />
-                <p className="mt-2 text-lg font-medium text-black">
-                  Giải thưởng giáo dục 2023
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
-                <Image
-                  src="/images/user.jpg"
-                  alt="Users"
-                  width={100}
-                  height={100}
-                  className="rounded-lg shadow-md object-cover transition-transform duration-300 hover:rotate-6"
-                />
-                <p className="mt-2 text-lg font-medium text-black">
-                  +10,000 người dùng hài lòng
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
-                <Image
-                  src="/images/certificate.jpg"
-                  alt="Certification"
-                  width={100}
-                  height={100}
-                  className="rounded-lg shadow-md object-cover transition-transform duration-300 hover:rotate-6"
-                />
-                <p className="mt-2 text-lg font-medium text-black">
-                  Chứng nhận ISO 9001
-                </p>
-              </div>
+              {[
+                { src: "/images/award.jpg", alt: "Award", text: "Giải thưởng giáo dục 2023" },
+                { src: "/images/user.jpg", alt: "Users", text: "+10,000 người dùng hài lòng" },
+                { src: "/images/certificate.jpg", alt: "Certification", text: "Chứng nhận ISO 9001" },
+              ].map((item, index) => (
+                <div key={item.src} className="flex flex-col items-center text-center transition-transform hover:scale-105">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={100}
+                    height={100}
+                    className="rounded-lg shadow-md object-cover transition-transform hover:rotate-6"
+                  />
+                  <p className="mt-2 text-lg font-medium text-black">{item.text}</p>
+                </div>
+              ))}
             </div>
           </section>
           
           {/* Mission Section */}
-          <section className="mb-12 animate-fade-in">
+          <section className="animate-fade-in">
             <h2 className="text-4xl font-semibold text-primary-dark-green mb-4 text-center">
               Sứ Mệnh Của Chúng Tôi
             </h2>
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 text-center md:text-left">
               Chúng tôi cam kết cung cấp một nền tảng học tiếng Anh chất lượng cao, giúp người học tự tin giao tiếp quốc tế, mở rộng cơ hội nghề nghiệp và kết nối toàn cầu.
             </p>
             <div className="flex flex-col md:flex-row items-center md:space-x-4">
-              <div className="md:w-1/2 transition-transform duration-300 hover:scale-105">
+              <div className="md:w-1/2 transition-transform hover:scale-105">
                 <Image
-                  src="/images/mission.WEBP" // Thay bằng hình ảnh thực tế
+                  src="/images/mission.WEBP"
                   alt="Mission"
                   width={350}
                   height={240}
@@ -112,7 +93,7 @@ export default function About() {
           </section>
           
           {/* Hypothetical Articles Section */}
-          <section className="mb-12 animate-fade-in">
+          <section className="animate-fade-in">
             <h2 className="text-4xl font-semibold text-primary-dark-green mb-6 text-center">
               Các Bài Báo Nổi Bật
             </h2>
@@ -139,7 +120,7 @@ export default function About() {
           </section>
           
           {/* Testimonials Section */}
-          <section className="mb-12 animate-fade-in">
+          <section className="animate-fade-in">
             <h2 className="text-4xl font-semibold text-primary-dark-green mb-6 text-center">
               Phản hồi của học viên
             </h2>
@@ -201,23 +182,21 @@ export default function About() {
           </section>
           
           {/* Statistics Section */}
-          <section className="mb-12 animate-fade-in">
+          <section className="animate-fade-in">
             <h2 className="text-3xl font-semibold text-primary-dark-green mb-6 text-center">
               Số Liệu Đáng Kể
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-center">
-              <div>
-                <p className="text-4xl font-bold text-primary-light-green">10,000+</p>
-                <p>Học viên</p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-primary-light-green">5+</p>
-                <p>Năm kinh nghiệm</p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-primary-light-green">100%</p>
-                <p>Học viên hài lòng</p>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              {[
+                { number: "10,000+", label: "Học viên" },
+                { number: "5+", label: "Năm kinh nghiệm" },
+                { number: "100%", label: "Học viên hài lòng" },
+              ].map((stat, index) => (
+                <div key={index}>
+                  <p className="text-4xl font-bold text-primary-light-green">{stat.number}</p>
+                  <p className="mt-2 text-lg">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </section>
           
@@ -229,8 +208,8 @@ export default function About() {
             <p className="text-lg mb-6">
               Tham gia cộng đồng học viên Eng Land và trải nghiệm phương pháp học tiếng Anh hiệu quả nhất.
             </p>
-            <Link href="/signup" className="bg-primary-light-green text-green py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark-green hover:text-green transition-colors duration-300">
-              Đăng ký ngay hôm nay để nhận ưu đãi 
+            <Link href="/courses" className="inline-block bg-primary-light-green text-green py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark-green hover:text-green transition-colors duration-300">
+              Đăng ký ngay hôm nay để nhận ưu đãi
             </Link>
           </section>
         </div>

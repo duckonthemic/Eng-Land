@@ -1,7 +1,12 @@
+// pages/signup.js
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
+import Image from 'next/image';
 
 const Signup = () => {
+  const router = useRouter();
   const [firstName, setFirstName]=useState('');
   const [lastName, setLastName]=useState('');
   const [email, setEmail]=useState('');
@@ -12,7 +17,7 @@ const Signup = () => {
   const handleSignup = async(e) =>{
     e.preventDefault();
     setError('');
-    if(password!==confirmPassword){
+    if(password !== confirmPassword){
       setError('Mật khẩu không trùng khớp');
       return;
     }
@@ -28,164 +33,113 @@ const Signup = () => {
         setError(data.message||'Đã xảy ra lỗi');
       } else {
         alert('Đăng ký thành công, mời đăng nhập');
-        window.location.href = '/login'; 
+        router.push('/login'); 
       }
     } catch(err){
       setError('Không thể kết nối server');
     }
   };
 
+  const handleSocialLogin = async (provider) => {
+    await signIn(provider, { callbackUrl: '/' });
+  };
+
   return (
-    <div style={styles.body}>
-      <div style={styles.overlay}></div>
-      <div style={styles.container}>
-        <h1 style={styles.h1}>Tạo tài khoản</h1>
-        <p style={styles.p}>
-          Bạn đã có tài khoản?{' '}
-          <Link href="/login" style={styles.link}>Đăng nhập</Link>
-        </p>
-        {error && <p style={{color:'red'}}>{error}</p>}
-        <div style={{ height: '30px' }}></div>
-        <form onSubmit={handleSignup} style={styles.form}>
-          <div style={styles.nameContainer}>
-            <div style={styles.formGroup}>
-              <input type="text" placeholder="Họ" required style={styles.input}
-                value={firstName} onChange={e=>setFirstName(e.target.value)} />
-            </div>
-            <div style={styles.formGroup}>
-              <input type="text" placeholder="Tên" required style={styles.input}
-                value={lastName} onChange={e=>setLastName(e.target.value)} />
-            </div>
-          </div>
-          <div style={styles.formGroup}>
-            <input type="email" placeholder="Email" required style={styles.input}
-              value={email} onChange={e=>setEmail(e.target.value)} />
-          </div>
-          <div style={styles.formGroup}>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center relative" style={{ backgroundImage: "url('/images/loginbg.jpg')" }}>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 relative animate-fadeIn">
+        <h1 className="text-3xl font-extrabold text-gray-800 mb-6 text-center">
+          Tạo tài khoản
+        </h1>
+        {error && <p className="text-red-500 text-center font-semibold mb-4">{error}</p>}
+        <div className="flex flex-col space-y-3 mb-6">
+          <button
+            onClick={() => handleSocialLogin('google')}
+            className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-full py-2 hover:bg-gray-100 transition"
+          >
+            <Image src="/images/google_icon.webp" alt="Google" width={20} height={20} />
+            <span className="font-medium text-gray-700">Tiếp tục với Google</span>
+          </button>
+          <button
+            onClick={() => handleSocialLogin('facebook')}
+            className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-full py-2 hover:bg-gray-100 transition"
+          >
+            <Image src="/images/facebook_icon.png" alt="Facebook" width={20} height={20} />
+            <span className="font-medium text-gray-700">Tiếp tục với Facebook</span>
+          </button>
+          <button
+            onClick={() => handleSocialLogin('github')}
+            className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-full py-2 hover:bg-gray-100 transition"
+          >
+            <Image src="/images/github_icon.png" alt="GitHub" width={20} height={20} />
+            <span className="font-medium text-gray-700">Tiếp tục với GitHub</span>
+          </button>
+        </div>
+        <div className="relative flex items-center justify-center mb-6">
+          <div className="border-t border-gray-300 w-full"></div>
+          <span className="px-2 bg-white text-gray-500 text-sm">Hoặc</span>
+        </div>
+        <form onSubmit={handleSignup} className="flex flex-col space-y-4">
+          <div className="flex space-x-4">
             <input
-              type="password"
-              placeholder="Mật khẩu"
+              type="text"
+              placeholder="Họ"
               required
-              style={styles.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={firstName}
+              onChange={e=>setFirstName(e.target.value)}
+              className="w-1/2 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
+            />
+            <input
+              type="text"
+              placeholder="Tên"
+              required
+              value={lastName}
+              onChange={e=>setLastName(e.target.value)}
+              className="w-1/2 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
             />
           </div>
-          <div style={styles.formGroup}>
-            <input
-              type="password"
-              placeholder="Xác nhận mật khẩu"
-              required
-              style={styles.input}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-          <div style={styles.buttonContainer}>
-            <button type="submit" style={styles.submit}>Tạo tài khoản</button>
-          </div>
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={e=>setEmail(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
+          />
+          <input
+            type="password"
+            placeholder="Mật khẩu"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
+          />
+          <input
+            type="password"
+            placeholder="Xác nhận mật khẩu"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
+          />
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white font-semibold py-3 rounded-full hover:bg-green-700 transition-colors"
+          >
+            Tạo tài khoản
+          </button>
         </form>
+        <div className="mt-4 flex flex-col items-center space-y-2">
+          <p className="text-sm text-gray-600">
+            Bạn đã có tài khoản?{' '}
+            <Link href="/login" className="text-green-600 font-semibold hover:underline">
+              Đăng nhập
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  body: {
-    margin: 0,
-    fontFamily: 'Arial, sans-serif',
-    background: 'url("https://i.ibb.co/kHKq22y/image.png") no-repeat center center fixed',
-    backgroundSize: 'cover',
-    position:'relative',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'left',
-    alignItems: 'center',
-    overflow: 'hidden',
-  },
-  overlay: {
-    position:'absolute',
-    top:0,
-    left:0,
-    width:'100%',
-    height:'100%',
-    background:'rgba(0,0,0,0.5)',
-    zIndex:1
-  },
-  container: {
-    position:'relative',
-    zIndex:2,
-    background: '#fefefe',
-    borderRadius: '15px',
-    marginLeft: '8vw',
-    padding: '50px',
-    width: '30vw',
-    minWidth:'320px',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
-    textAlign: 'center',
-  },
-  h1: {
-    fontSize: '2.5rem',
-    color: '#333',
-    marginBottom: '10px',
-    fontWeight: 'bold',
-  },
-  p: {
-    color: '#555',
-    margin: '10px 0',
-    fontSize: '0.95rem',
-  },
-  link: {
-    color: '#03a9f4',
-    textDecoration: 'none',
-    fontWeight:'bold'
-  },
-  nameContainer: {
-    width: '90%',
-    display: 'flex',
-    gap: '20px',
-    justifyContent: 'center',
-    margin: '0 auto',
-  },
-  form: {
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center'
-  },
-  formGroup: {
-    marginBottom: '15px',
-    flex: 1,
-    width:'100%',
-    display:'flex',
-    justifyContent:'center'
-  },
-  input: {
-    width: '90%',
-    padding: '15px 0',
-    border: '2px solid #ccc',
-    borderRadius: '30px',
-    background: '#ffffff',
-    color: '#333',
-    fontSize: '1rem',
-    textAlign: 'center',
-    transition:'border-color 0.3s',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    width:'100%'
-  },
-  submit: {
-    background: '#059851',
-    border: 'none',
-    color: '#ffffff',
-    padding: '15px',
-    borderRadius: '30px',
-    fontSize: '1.2rem',
-    cursor: 'pointer',
-    width: '90%',
-    transition:'background 0.3s',
-  },
 };
 
 export default Signup;

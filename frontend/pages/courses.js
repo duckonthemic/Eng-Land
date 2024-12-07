@@ -127,7 +127,7 @@ export default function Courses() {
                     <CourseCard course={course} />
                     <button
                       onClick={() => handleAddToCart(course)}
-                      className="mt-4 bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition"
+                      className="mt-3 bg-green-700 text-white px-3 py-1 rounded-full hover:bg-green-600 transition"
                     >
                       Thêm vào giỏ hàng
                     </button>

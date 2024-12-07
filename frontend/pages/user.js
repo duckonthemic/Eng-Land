@@ -115,7 +115,6 @@ export default function UserPage() {
       const data = await res.json();
       if(res.ok){
         setMessage('Đổi avatar thành công!');
-        // Cập nhật user.avatar
         const updatedUser = {...user, avatar:data.avatar};
         setUser(updatedUser);
         localStorage.setItem('user', JSON.stringify(updatedUser));
@@ -131,46 +130,44 @@ export default function UserPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <div className="max-w-4xl mx-auto bg-white p-8 shadow-md rounded-md">
-        <h1 className="text-2xl font-bold mb-4">Trang Tài Khoản</h1>
+    <div className="min-h-screen bg-green-50 py-10">
+      <div className="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-md">
+        <h1 className="text-3xl font-bold mb-6 text-green-700">Trang Tài Khoản</h1>
 
         {message && <p className="text-center text-green-600 font-semibold mb-4">{message}</p>}
 
-        <div className="flex flex-col md:flex-row md:space-x-8 items-center mb-8">
+        <div className="flex flex-col md:flex-row md:space-x-8 items-center mb-8 shadow-md p-4 rounded-lg bg-green-100">
           <div className="flex-shrink-0">
             {user.avatar ? (
-              <img src={user.avatar} alt="Avatar" className="w-32 h-32 rounded-full object-cover" />
+              <img src={user.avatar} alt="Avatar" className="w-32 h-32 rounded-full object-cover shadow-md" />
             ) : (
-              <div className="w-32 h-32 bg-gray-300 rounded-full flex items-center justify-center">
+              <div className="w-32 h-32 bg-gray-300 rounded-full flex items-center justify-center shadow-md">
                 No Avatar
               </div>
             )}
           </div>
           <div className="mt-4 md:mt-0">
-            <p><strong>Họ Tên:</strong> {user.firstName} {user.lastName}</p>
-            <p><strong>Email:</strong> {user.email}</p>
+            <p className="text-lg"><strong>Họ Tên:</strong> {user.firstName} {user.lastName}</p>
+            <p className="text-lg"><strong>Email:</strong> {user.email}</p>
             
-            {/* Nút đổi avatar */}
             <button 
               onClick={() => setShowChangeAvatar(!showChangeAvatar)} 
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+              className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition shadow-lg"
             >
               Đổi Avatar
             </button>
             
-            {/* Form đổi avatar */}
             {showChangeAvatar && (
               <form className="mt-4" onSubmit={handleChangeAvatar} encType="multipart/form-data">
                 <input 
                   type="file" 
                   accept="image/*"
                   onChange={(e)=>setAvatarFile(e.target.files[0])}
-                  className="block mb-2"
+                  className="block mb-2 w-full"
                 />
                 <button 
                   type="submit"
-                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition shadow-lg"
                 >
                   Cập nhật Avatar
                 </button>
@@ -179,16 +176,15 @@ export default function UserPage() {
           </div>
         </div>
 
-        {/* Thay đổi mật khẩu */}
         <button 
           onClick={() => setShowChangePassword(!showChangePassword)} 
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition mb-8"
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition mb-8 shadow-lg"
         >
           Đổi mật khẩu
         </button>
 
         {showChangePassword && (
-          <form onSubmit={handleChangePassword} className="mb-8">
+          <form onSubmit={handleChangePassword} className="mb-8 shadow p-4 rounded-lg bg-green-50">
             <div className="mb-4">
               <input
                 type="password"
@@ -196,7 +192,7 @@ export default function UserPage() {
                 required
                 value={oldPassword}
                 onChange={(e)=>setOldPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded"
+                className="w-full px-4 py-2 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
               />
             </div>
             <div className="mb-4">
@@ -206,32 +202,31 @@ export default function UserPage() {
                 required
                 value={newPassword}
                 onChange={(e)=>setNewPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded"
+                className="w-full px-4 py-2 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
               />
             </div>
             <button
               type="submit"
-              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition shadow-lg"
             >
               Cập nhật mật khẩu
             </button>
           </form>
         )}
 
-        {/* Danh sách khóa học đã mua */}
-        <h2 className="text-xl font-semibold mb-4">Khóa Học Đã Mua</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-green-700">Khóa Học Đã Mua</h2>
         {purchasedCourses.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {purchasedCourses.map((course) => (
-              <div key={course.id} className="border border-gray-200 rounded p-4">
-                <h3 className="font-bold text-lg">{course.title}</h3>
-                <p className="text-sm text-gray-600 mb-2">{course.description}</p>
+              <div key={course.id} className="border border-green-300 rounded p-6 shadow hover:shadow-lg transition bg-green-50">
+                <h3 className="font-bold text-xl text-green-800">{course.title}</h3>
+                <p className="text-sm text-green-600 mb-2">{course.description}</p>
                 <p className="font-semibold text-green-600">{course.price} VND</p>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-600">Bạn chưa mua khóa học nào.</p>
+          <p className="text-green-600">Bạn chưa mua khóa học nào.</p>
         )}
       </div>
     </div>

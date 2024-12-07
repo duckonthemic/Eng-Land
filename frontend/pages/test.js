@@ -1,6 +1,6 @@
 // pages/test.js
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
@@ -12,11 +12,28 @@ import testQuestions from '../data/testQuestions';
 export default function TestPage() {
   const [userAnswers, setUserAnswers] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const totalQuestions = testQuestions.length;
+  const [selectedQuestions, setSelectedQuestions] = useState([]);
+  const totalQuestions = 10;
   const testDuration = 600; // 10 phút = 600 giây
+
+  useEffect(() => {
+    selectRandomQuestions();
+  }, []);
+
+  const selectRandomQuestions = () => {
+    const shuffled = [...testQuestions].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, totalQuestions);
+    setSelectedQuestions(selected);
+  };
 
   const handleSubmit = () => {
     setIsSubmitted(true);
+  };
+
+  const handleRetry = () => {
+    setUserAnswers({});
+    setIsSubmitted(false);
+    selectRandomQuestions();
   };
 
   const handleTimeUp = useCallback(() => {
@@ -25,12 +42,12 @@ export default function TestPage() {
 
   const calculateScore = () => {
     let correctAnswers = 0;
-    testQuestions.forEach((question) => {
+    selectedQuestions.forEach((question) => {
       if (userAnswers[question.id] === question.answer) {
         correctAnswers += 1;
       }
     });
-    return { correctAnswers, totalQuestions };
+    return { correctAnswers, totalQuestions: selectedQuestions.length };
   };
 
   const { correctAnswers, totalQuestions: tq } = calculateScore();
@@ -55,7 +72,7 @@ export default function TestPage() {
 
           {!isSubmitted ? (
             <>
-              {testQuestions.map((question) => (
+              {selectedQuestions.map((question) => (
                 <TestQuestion
                   key={question.id}
                   questionData={question}
@@ -75,7 +92,7 @@ export default function TestPage() {
             </>
           ) : (
             <>
-              {testQuestions.map((question) => (
+              {selectedQuestions.map((question) => (
                 <TestQuestion
                   key={question.id}
                   questionData={question}
@@ -91,9 +108,15 @@ export default function TestPage() {
                   <span className="font-bold text-green-500">{correctAnswers}</span> trong tổng số{' '}
                   <span className="font-bold text-blue-500">{tq}</span> câu hỏi.
                 </p>
+                <button
+                  onClick={handleRetry}
+                  className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+                >
+                  Thực Hiện Lại
+                </button>
                 <Link
                   href="/"
-                  className="inline-block bg-primary-light-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark-green transition-colors duration-300"
+                  className="inline-block mt-4 bg-primary-light-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark-green transition-colors duration-300"
                 >
                   Quay Lại Trang Chủ
                 </Link>
