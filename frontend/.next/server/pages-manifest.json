@@ -2,11 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/login": "pages/login.js",
-  "/signup": "pages/signup.js",
-  "/cart": "pages/cart.js",
+  "/about": "pages/about.js",
+  "/test": "pages/test.js",
   "/courses": "pages/courses.js",
-  "/user": "pages/user.js",
-  "/payment": "pages/payment.js"
+  "/selfstudy": "pages/selfstudy.js",
+  "/": "pages/index.js",
+  "/selfstudy/dictionary": "pages/selfstudy/dictionary.js"
 }

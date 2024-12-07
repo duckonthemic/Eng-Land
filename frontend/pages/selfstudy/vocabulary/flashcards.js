@@ -7,7 +7,7 @@ import Flashcard from '../../../components/Flashcard';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 
-// Kích hoạt plugin isSameOrAfter
+// Initialize dayjs plugin
 dayjs.extend(isSameOrAfter);
 
 export default function VocabularyFlashcardsPage() {
@@ -24,127 +24,119 @@ export default function VocabularyFlashcardsPage() {
     audio: '',
   });
 
-  // Lấy flashcards từ Local Storage hoặc sử dụng dữ liệu gốc
+  // Load flashcards from Local Storage or use default data
   useEffect(() => {
-    const storedFlashcards = JSON.parse(localStorage.getItem('vocabularyFlashcards'));
-    if (storedFlashcards && storedFlashcards.length > 0) {
-      setFlashcards(storedFlashcards);
-    } else {
-      setFlashcards(vocabularyFlashcards);
-    }
+    const stored = JSON.parse(localStorage.getItem('vocabularyFlashcards'));
+    setFlashcards(stored && stored.length ? stored : vocabularyFlashcards);
   }, []);
 
-  // Lưu flashcards vào Local Storage mỗi khi chúng thay đổi
+  // Save flashcards to Local Storage on change
   useEffect(() => {
     localStorage.setItem('vocabularyFlashcards', JSON.stringify(flashcards));
   }, [flashcards]);
 
-  // Lọc flashcards dựa trên từ khóa tìm kiếm và tag
+  // Filter flashcards based on search and tag
   const filteredFlashcards = flashcards.filter(card => {
-    const matchesSearch =
+    const searchMatch =
       card.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
       card.answer.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTag = selectedTag ? card.tags.includes(selectedTag) : true;
-    return matchesSearch && matchesTag;
+    const tagMatch = selectedTag ? card.tags.includes(selectedTag) : true;
+    return searchMatch && tagMatch;
   });
 
-  // Lấy danh sách các tags duy nhất để hiển thị trong dropdown
+  // Extract unique tags
   const tags = [...new Set(flashcards.flatMap(card => card.tags))];
 
-  // Hàm để đánh dấu Flashcard
+  // Mark flashcard status
   const handleMark = (id, mark) => {
-    setFlashcards(prevFlashcards =>
-      prevFlashcards.map(card => {
-        if (card.id === id) {
-          const today = dayjs().format('YYYY-MM-DD');
-          let newInterval = 1;
-          if (mark === 'known') {
-            newInterval = card.reviewInterval ? card.reviewInterval * 2 : 2; // Tăng khoảng cách ôn tập
-          }
-          return {
-            ...card,
-            status: mark,
-            lastReviewed: today,
-            reviewInterval: newInterval,
-          };
-        }
-        return card;
-      })
+    const today = dayjs().format('YYYY-MM-DD');
+    setFlashcards(prev =>
+      prev.map(card =>
+        card.id === id
+          ? {
+              ...card,
+              status: mark,
+              lastReviewed: today,
+              reviewInterval: mark === 'known' ? (card.reviewInterval || 1) * 2 : 1,
+            }
+          : card
+      )
     );
   };
 
-  // Hàm để chọn Flashcards cần ôn tập
-  const selectFlashcardsForReview = () => {
+  // Select flashcards for review
+  const selectFlashcards = () => {
     const today = dayjs();
-    const cardsToReview = flashcards.filter(card => {
+    const toReview = flashcards.filter(card => {
       if (card.lastReviewed) {
-        const nextReviewDate = dayjs(card.lastReviewed).add(card.reviewInterval, 'day');
-        return today.isSameOrAfter(nextReviewDate);
+        const nextReview = dayjs(card.lastReviewed).add(card.reviewInterval, 'day');
+        return today.isSameOrAfter(nextReview);
       }
-      return true; // Nếu chưa được xem lần nào, thêm vào danh sách
+      return true;
     });
-    setSessionFlashcards(cardsToReview.length > 0 ? cardsToReview : flashcards);
+    setSessionFlashcards(toReview.length ? toReview : flashcards);
     setCurrentIndex(0);
   };
 
-  // Hàm để bắt đầu một phiên học mới
-  const startStudySession = () => {
-    selectFlashcardsForReview();
+  // Start study session
+  const startSession = () => {
+    selectFlashcards();
   };
 
-  // Hàm để chuyển sang Flashcard tiếp theo trong phiên học
-  const nextFlashcard = () => {
-    setCurrentIndex(prevIndex => (prevIndex + 1) % sessionFlashcards.length);
+  // Navigate to next flashcard
+  const nextCard = () => {
+    setCurrentIndex(prev => (prev + 1) % sessionFlashcards.length);
   };
 
-  // Hàm để xáo trộn Flashcards
-  const shuffleFlashcards = () => {
+  // Shuffle flashcards
+  const shuffleCards = () => {
     const shuffled = [...filteredFlashcards].sort(() => Math.random() - 0.5);
     setSessionFlashcards(shuffled);
     setCurrentIndex(0);
   };
 
-  // Hàm để thêm Flashcard mới
+  // Add a new flashcard
   const addFlashcard = (e) => {
     e.preventDefault();
-    if (!newFlashcard.question || !newFlashcard.answer) {
-      alert('Vui lòng nhập câu hỏi và câu trả lời.');
+    const { question, answer, tags, image, audio } = newFlashcard;
+    if (!question || !answer) {
+      alert('Please enter both question and answer.');
       return;
     }
-    const tagsArray = newFlashcard.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+    const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
     const newCard = {
-      id: flashcards.length > 0 ? flashcards[flashcards.length - 1].id + 1 : 1,
-      question: newFlashcard.question,
-      answer: newFlashcard.answer,
+      id: flashcards.length ? flashcards[flashcards.length - 1].id + 1 : 1,
+      question,
+      answer,
       tags: tagsArray,
-      level: 'Beginner', // Bạn có thể cho phép người dùng chọn level nếu muốn
+      level: 'Beginner',
       status: 'unknown',
       lastReviewed: null,
       reviewInterval: 1,
-      image: newFlashcard.image,
-      audio: newFlashcard.audio,
+      image,
+      audio,
     };
     setFlashcards([...flashcards, newCard]);
     setNewFlashcard({ question: '', answer: '', tags: '', image: '', audio: '' });
   };
 
-  // Hàm để xóa Flashcard
+  // Delete a flashcard
   const deleteFlashcard = (id) => {
-    if (window.confirm('Bạn có chắc chắn muốn xóa flashcard này không?')) {
-      setFlashcards(prevFlashcards => prevFlashcards.filter(card => card.id !== id));
+    if (confirm('Are you sure you want to delete this flashcard?')) {
+      setFlashcards(prev => prev.filter(card => card.id !== id));
     }
   };
 
   return (
     <main className="min-h-screen bg-white py-12">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">Flashcards Vocabulary</h1>
+        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">Vocabulary Flashcards</h1>
 
-        {/* Tìm kiếm và lọc flashcards */}
+        {/* Search and Filter */}
         <div className="flex flex-col md:flex-row items-center justify-center mb-8 space-y-4 md:space-y-0 md:space-x-4">
           <input
             type="text"
-            placeholder="Tìm kiếm flashcards..."
+            placeholder="Search flashcards..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full md:w-1/3 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
@@ -154,7 +146,7 @@ export default function VocabularyFlashcardsPage() {
             onChange={(e) => setSelectedTag(e.target.value)}
             className="w-full md:w-1/4 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
           >
-            <option value="">Tất cả Tags</option>
+            <option value="">All Tags</option>
             {tags.map(tag => (
               <option key={tag} value={tag}>{tag}</option>
             ))}
@@ -164,77 +156,52 @@ export default function VocabularyFlashcardsPage() {
               onClick={() => { setSearchTerm(''); setSelectedTag(''); }}
               className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
             >
-              Xóa
+              Clear
             </button>
           )}
         </div>
 
-        {/* Thêm Flashcard mới */}
+        {/* Add New Flashcard */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-center">Thêm Flashcard Mới</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center">Add New Flashcard</h2>
           <form onSubmit={addFlashcard} className="flex flex-col items-center space-y-4">
-            <input
-              type="text"
-              placeholder="Câu hỏi"
-              value={newFlashcard.question}
-              onChange={(e) => setNewFlashcard({ ...newFlashcard, question: e.target.value })}
-              className="w-full md:w-1/2 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
-            />
-            <input
-              type="text"
-              placeholder="Câu trả lời"
-              value={newFlashcard.answer}
-              onChange={(e) => setNewFlashcard({ ...newFlashcard, answer: e.target.value })}
-              className="w-full md:w-1/2 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
-            />
-            <input
-              type="text"
-              placeholder="Tags (cách nhau bằng dấu phẩy)"
-              value={newFlashcard.tags}
-              onChange={(e) => setNewFlashcard({ ...newFlashcard, tags: e.target.value })}
-              className="w-full md:w-1/2 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
-            />
-            <input
-              type="text"
-              placeholder="Link hình ảnh (URL)"
-              value={newFlashcard.image}
-              onChange={(e) => setNewFlashcard({ ...newFlashcard, image: e.target.value })}
-              className="w-full md:w-1/2 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
-            />
-            <input
-              type="text"
-              placeholder="Link âm thanh (URL)"
-              value={newFlashcard.audio}
-              onChange={(e) => setNewFlashcard({ ...newFlashcard, audio: e.target.value })}
-              className="w-full md:w-1/2 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
-            />
+            {['question', 'answer', 'tags', 'image', 'audio'].map(field => (
+              <input
+                key={field}
+                type="text"
+                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                value={newFlashcard[field]}
+                onChange={(e) => setNewFlashcard({ ...newFlashcard, [field]: e.target.value })}
+                className="w-full md:w-1/2 border-2 border-primary-light-green rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark-green"
+              />
+            ))}
             <button
               type="submit"
               className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
             >
-              Thêm Flashcard
+              Add Flashcard
             </button>
           </form>
         </div>
 
-        {/* Các nút chức năng */}
+        {/* Action Buttons */}
         <div className="flex justify-center space-x-4 mb-8">
           <button
-            onClick={startStudySession}
+            onClick={startSession}
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
           >
-            Bắt đầu học
+            Start Study Session
           </button>
           <button
-            onClick={shuffleFlashcards}
+            onClick={shuffleCards}
             className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
           >
-            Xáo trộn Flashcards
+            Shuffle Flashcards
           </button>
         </div>
 
-        {/* Phiên học tập */}
-        {sessionFlashcards.length > 0 && (
+        {/* Study Session */}
+        {sessionFlashcards.length > 0 ? (
           <div className="flex flex-col items-center">
             <Flashcard
               question={sessionFlashcards[currentIndex].question}
@@ -246,56 +213,52 @@ export default function VocabularyFlashcardsPage() {
               audio={sessionFlashcards[currentIndex].audio}
             />
             <button
-              onClick={nextFlashcard}
+              onClick={nextCard}
               className="mt-4 bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
             >
-              Flashcard Tiếp Theo
+              Next Flashcard
             </button>
           </div>
+        ) : (
+          /* Display Filtered Flashcards */
+          filteredFlashcards.length ? (
+            <div className="flex flex-wrap justify-center gap-8">
+              {filteredFlashcards.map(card => (
+                <div key={card.id} className="relative">
+                  <Flashcard
+                    question={card.question}
+                    answer={card.answer}
+                    status={card.status}
+                    onMark={(mark) => handleMark(card.id, mark)}
+                    type={card.tags.includes('Translation') ? 'translation' : 'definition'}
+                    image={card.image}
+                    audio={card.audio}
+                  />
+                  <button
+                    onClick={() => deleteFlashcard(card.id)}
+                    className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1"
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-neutral-dark">No matching flashcards found.</p>
+          )
         )}
 
-        {/* Hiển thị các flashcards đã lọc */}
-        {!sessionFlashcards.length > 0 && (
-          <>
-            {filteredFlashcards.length > 0 ? (
-              <div className="flex flex-wrap justify-center gap-8">
-                {filteredFlashcards.map(card => (
-                  <div key={card.id} className="relative">
-                    <Flashcard
-                      question={card.question}
-                      answer={card.answer}
-                      status={card.status}
-                      onMark={(mark) => handleMark(card.id, mark)}
-                      type={card.tags.includes('Translation') ? 'translation' : 'definition'}
-                      image={card.image}
-                      audio={card.audio}
-                    />
-                    <button
-                      onClick={() => deleteFlashcard(card.id)}
-                      className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1"
-                    >
-                      &times;
-                    </button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center text-neutral-dark">Không tìm thấy flashcards nào phù hợp.</p>
-            )}
-          </>
-        )}
-
-        {/* Hiển thị thống kê */}
+        {/* Statistics */}
         <div className="mt-8 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Thống kê học tập</h2>
+          <h2 className="text-2xl font-semibold mb-4">Study Statistics</h2>
           <p className="text-lg">
-            Tổng số Flashcards: <span className="font-bold">{flashcards.length}</span>
+            Total Flashcards: <span className="font-bold">{flashcards.length}</span>
           </p>
           <p className="text-lg">
-            Đã biết: <span className="font-bold text-green-600">{flashcards.filter(card => card.status === 'known').length}</span>
+            Known: <span className="font-bold text-green-600">{flashcards.filter(card => card.status === 'known').length}</span>
           </p>
           <p className="text-lg">
-            Chưa biết: <span className="font-bold text-red-600">{flashcards.filter(card => card.status === 'unknown').length}</span>
+            Unknown: <span className="font-bold text-red-600">{flashcards.filter(card => card.status === 'unknown').length}</span>
           </p>
         </div>
       </div>

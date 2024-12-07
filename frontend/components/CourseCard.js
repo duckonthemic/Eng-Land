@@ -6,7 +6,7 @@ const CourseCard = ({ course }) => {
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="block bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+      className="block bg-white rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
     >
       <div className="relative h-48">
         <Image

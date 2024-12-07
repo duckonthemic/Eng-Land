@@ -9,8 +9,8 @@ const courses = [
     level: "Cơ Bản",
     price: 1999000, // Giá bán
     duration: "3 tháng", // Thời gian
-    instructors: ["Nguyễn Văn A", "Trần Thị B"], // Giáo viên giảng dạy
-    learningMethod: "Online", // Hình thức học
+    instructors: ["David Nguyen", "Trần Thị Bảng"],
+    learningMethod: "Online (Zoom, Google Meet)",
     curriculum: [
       "Bài 1: Giới thiệu về ngữ pháp tiếng Anh",
       "Bài 2: Thì hiện tại đơn và hiện tại tiếp diễn",
@@ -20,7 +20,7 @@ const courses = [
       "Bài 6: Câu điều kiện cơ bản",
       "Bài 7: Câu so sánh",
       "Bài 8: Ôn tập và kiểm tra cuối khóa",
-    ], // Lộ trình
+    ],
     image: "/images/courses/grammar-basics.jpg",
     details:
       "Trong khóa học Ngữ Pháp Cơ Bản này, bạn sẽ học về các thì trong tiếng Anh, cách sử dụng danh từ, động từ, tính từ, trạng từ, giới từ và các cấu trúc câu cơ bản. Khóa học sẽ giúp bạn xây dựng nền tảng vững chắc để tiếp tục học các khóa nâng cao hơn.",
@@ -33,8 +33,8 @@ const courses = [
     level: "Cơ Bản",
     price: 1999000,
     duration: "2 tháng",
-    instructors: ["Lê Văn C"],
-    learningMethod: "Online",
+    instructors: ["Lê Văn Luyện", "Sophia Brown"],
+    learningMethod: "Online (Zoom)",
     curriculum: [
       "Bài 1: Từ vựng về gia đình",
       "Bài 2: Từ vựng về công việc",
@@ -56,8 +56,8 @@ const courses = [
     level: "Trung Bình",
     price: 1999000,
     duration: "4 tháng",
-    instructors: ["Phạm Thị D"],
-    learningMethod: "Online",
+    instructors: ["Phạm Thị D", "Emily Smith"],
+    learningMethod: "Online (Google Meet)",
     curriculum: [
       "Bài 1: Phát âm cơ bản",
       "Bài 2: Ngữ điệu và nhấn âm",
@@ -79,8 +79,8 @@ const courses = [
     level: "Trung Bình",
     price: 1999000,
     duration: "3 tháng",
-    instructors: ["Trần Văn E"],
-    learningMethod: "Online",
+    instructors: ["Trần Văn Em", "John Williams"],
+    learningMethod: "Online (Zoom, Google Meet)",
     curriculum: [
       "Bài 1: Nghe hiểu cơ bản",
       "Bài 2: Nghe hội thoại hàng ngày",
@@ -101,8 +101,8 @@ const courses = [
     level: "Nâng Cao",
     price: 1999000,
     duration: "4 tháng",
-    instructors: ["Nguyễn Thị F"],
-    learningMethod: "Online",
+    instructors: ["Nguyễn Thị Hiền", "Michael Jackson"],
+    learningMethod: "Online (Google Meet)",
     curriculum: [
       "Bài 1: Thì hoàn thành và hoàn thành tiếp diễn",
       "Bài 2: Câu bị động nâng cao",
@@ -116,7 +116,98 @@ const courses = [
     details:
       "Khóa học Ngữ Pháp Nâng Cao tập trung vào các cấu trúc ngữ pháp phức tạp, giúp bạn sử dụng tiếng Anh một cách chính xác và linh hoạt. Khóa học phù hợp với những người đã có nền tảng ngữ pháp cơ bản và muốn nâng cao trình độ.",
   },
-  // Bạn có thể thêm các khóa học khác tương tự tại đây
+  {
+    id: 6,
+    title: "Viết Tiếng Anh Thuyết Phục",
+    description: "Phát triển kỹ năng viết tiếng Anh hiệu quả và thuyết phục.",
+    category: "Kỹ năng viết",
+    level: "Trung Bình",
+    price: 2499000,
+    duration: "5 tháng",
+    instructors: ["Lê Thị G", "Sarah Lee"],
+    learningMethod: "Online (Zoom, Google Meet)",
+    curriculum: [
+      "Bài 1: Cấu trúc bài viết cơ bản",
+      "Bài 2: Viết đoạn văn và phát triển ý tưởng",
+      "Bài 3: Viết thư và email chuyên nghiệp",
+      "Bài 4: Kỹ thuật viết luận",
+      "Bài 5: Chỉnh sửa và hiệu đính bài viết",
+      "Bài 6: Viết sáng tạo và thể hiện cá nhân",
+      "Bài 7: Ôn tập và kiểm tra cuối khóa",
+    ],
+    image: "/images/courses/english-writing.png",
+    details:
+      "Khóa học Viết Tiếng Anh Thuyết Phục giúp bạn nâng cao kỹ năng viết thông qua các bài tập thực tiễn và phản hồi từ giảng viên. Bạn sẽ học cách viết rõ ràng, mạch lạc và thuyết phục trong nhiều ngữ cảnh khác nhau.",
+  },
+  {
+    id: 7,
+    title: "Chuẩn Bị Thi TOEIC",
+    description: "Chuẩn bị kỹ lưỡng cho kỳ thi TOEIC với các chiến lược thi hiệu quả.",
+    category: "Chuẩn bị thi",
+    level: "Trung Bình",
+    price: 2999000,
+    duration: "6 tháng",
+    instructors: ["Trần Văn Hậu", "Emma Brown"],
+    learningMethod: "Online (Zoom)",
+    curriculum: [
+      "Bài 1: Giới thiệu về đề thi TOEIC",
+      "Bài 2: Kỹ năng nghe hiểu cho TOEIC",
+      "Bài 3: Kỹ năng đọc hiểu cho TOEIC",
+      "Bài 4: Từ vựng và ngữ pháp cho TOEIC",
+      "Bài 5: Chiến lược làm bài hiệu quả",
+      "Bài 6: Bài tập thực hành và giải đề thử",
+      "Bài 7: Ôn tập và kiểm tra cuối khóa",
+    ],
+    image: "/images/courses/toeic-preparation.png",
+    details:
+      "Khóa học Chuẩn Bị Thi TOEIC cung cấp các kỹ năng và chiến lược cần thiết để đạt điểm cao trong kỳ thi TOEIC. Bạn sẽ thực hành với các bài tập mô phỏng và nhận được phản hồi để cải thiện hiệu suất thi của mình.",
+  },
+  {
+    id: 8,
+    title: "Giao Tiếp Kinh Doanh Tiếng Anh",
+    description: "Phát triển kỹ năng giao tiếp tiếng Anh chuyên nghiệp trong môi trường kinh doanh.",
+    category: "Kỹ năng giao tiếp",
+    level: "Nâng Cao",
+    price: 2499000,
+    duration: "5 tháng",
+    instructors: ["Nguyễn Văn Khánh", "Linda Martinez"],
+    learningMethod: "Online (Zoom, Google Meet)",
+    curriculum: [
+      "Bài 1: Kỹ năng giao tiếp trong cuộc họp",
+      "Bài 2: Thuyết trình và trình bày ý tưởng",
+      "Bài 3: Viết báo cáo và email chuyên nghiệp",
+      "Bài 4: Đàm phán và thương lượng",
+      "Bài 5: Xử lý tình huống khó khăn",
+      "Bài 6: Phát triển kỹ năng lãnh đạo",
+      "Bài 7: Ôn tập và kiểm tra cuối khóa",
+    ],
+    image: "/images/courses/business-communication.jpg",
+    details:
+      "Khóa học Giao Tiếp Kinh Doanh Tiếng Anh giúp bạn phát triển các kỹ năng cần thiết để giao tiếp hiệu quả trong môi trường làm việc quốc tế. Bạn sẽ học cách thuyết phục, trình bày và đàm phán một cách chuyên nghiệp.",
+  },
+  {
+    id: 9,
+    title: "Tiếng Anh Du Lịch",
+    description: "Chuẩn bị cho chuyến du lịch với kỹ năng tiếng Anh cơ bản và thực tế.",
+    category: "Tiếng Anh du lịch",
+    level: "Cơ Bản",
+    price: 1499000,
+    duration: "2 tháng",
+    instructors: ["Phạm Thị Lan", "James Wilson"],
+    learningMethod: "Online (Google Meet)",
+    curriculum: [
+      "Bài 1: Giao tiếp cơ bản tại sân bay",
+      "Bài 2: Đặt phòng khách sạn",
+      "Bài 3: Đặt vé và di chuyển",
+      "Bài 4: Thực đơn và giao tiếp tại nhà hàng",
+      "Bài 5: Mua sắm và thương lượng giá",
+      "Bài 6: Giải quyết sự cố và nhu cầu khẩn cấp",
+      "Bài 7: Ôn tập và kiểm tra cuối khóa",
+    ],
+    image: "/images/courses/travel-english.png",
+    details:
+      "Khóa học Tiếng Anh Du Lịch cung cấp các kỹ năng giao tiếp cần thiết cho chuyến đi của bạn. Bạn sẽ được thực hành các tình huống thực tế để tự tin giao tiếp trong các hoạt động du lịch.",
+  },
 ];
 
 export default courses;

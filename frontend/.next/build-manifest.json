@@ -28,35 +28,30 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/cart": [
+    "/about": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/cart.js"
+      "static/chunks/pages/about.js"
     ],
     "/courses": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/courses.js"
     ],
-    "/login": [
+    "/selfstudy": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/login.js"
+      "static/chunks/pages/selfstudy.js"
     ],
-    "/payment": [
+    "/selfstudy/dictionary": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/payment.js"
+      "static/chunks/pages/selfstudy/dictionary.js"
     ],
-    "/signup": [
+    "/test": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/signup.js"
-    ],
-    "/user": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/user.js"
+      "static/chunks/pages/test.js"
     ]
   },
   "ampFirstPages": []
