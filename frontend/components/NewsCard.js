@@ -24,8 +24,9 @@ const styles = {
   },
   image: {
     width: '100%',
-    height: 'auto',
+    height: '200px',
     borderRadius: '20px',
+    objectFit: 'cover',
   },
   title: {
     fontSize: '1.5rem',

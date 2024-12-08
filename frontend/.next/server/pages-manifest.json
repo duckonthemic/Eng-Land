@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/fluency": "pages/fluency.js",
-  "/": "pages/index.js",
-  "/mastery": "pages/mastery.js"
+  "/articles/[id]": "pages/articles/[id].js",
+  "/news/[id]": "pages/news/[id].js",
+  "/news": "pages/news.js",
+  "/about": "pages/about.js",
+  "/signup": "pages/signup.js",
+  "/consult": "pages/consult.js",
+  "/login": "pages/login.js",
+  "/forgotpassword": "pages/forgotpassword.js"
 }

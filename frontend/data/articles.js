@@ -78,28 +78,29 @@ const articles = [
         benefits: [
             {
                 id: 1,
-                title: 'Câu Chuyện Của Minh Anh',
-                image: 'https://scontent.xx.fbcdn.net/v/t1.15752-9/454993932_1396959604524696_863642371425524351_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeEw5UghuPFSO2b72FNknSj1TlSixwGfJK5OVKLHAZ8krkqMNWMHuefDkTrJxPgNIUDVQgKvRKo-N_BrMUy37i-7&_nc_ohc=-GFXg3YjCU8Q7kNvgFqVhVU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QHAEX3iCAJnc7wpDwkN83owJWuRgxpf6nrFWu9MYqmr1g&oe=677BCA37',
+                title: 'Câu Chuyện Của Tuấn Vỹ',
+                image: 'https://i.ibb.co/7NXM5CB/image.png',
                 content:
-                    'Minh Anh, một học viên từ Hà Nội, đã vượt qua kỳ thi IELTS với số điểm 8.0 chỉ sau 6 tháng học tại Eng Land. Sự kiên trì và giáo trình cá nhân hóa đã giúp cô ấy đạt được thành công này.',
+                    'Tuấn Vỹ, một học viên từ Hà Nội, đã vượt qua kỳ thi IELTS với số điểm 8.0 chỉ sau 6 tháng học tại Eng Land. Sự kiên trì và giáo trình cá nhân hóa đã giúp cậu ấy đạt được thành công này.',
             },
             {
                 id: 2,
                 title: 'Câu Chuyện Của Quốc Hùng',
-                image: 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462566330_1537850266900656_28744076785458867_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeETsDg-188YDHlx6rv-hlqQQnsqwcHlcoNCeyrBweVyg3lQo1gCHTAdD99CX7GZUsVpN5HBRfDc1ISH9f_XkC-1&_nc_ohc=Tsv-wure8_YQ7kNvgHcVuvU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFGhRjlO0mHXyAupYoalmXE3SOxW8s4j4VMZlNWSuGwaQ&oe=677BDD35',
+                image: 'https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/448481070_3582866845301618_3886643608868948135_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGJ3l9W4LeVLqxAM0be02ShB5GHgNXN5ZkHkYeA1c3lmW5PEUPmmB991Zo72D7lOnBglyzqjixn1lPh7yS6KMVD&_nc_ohc=r11Ck63RftsQ7kNvgGsln52&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=ASriU9kJ-I-YKOBy96qv2La&oh=00_AYC8aUO85QM3I74wkOQI4hkJARrM7nnk5U68JdfO8qDJ8w&oe=675B877A',
                 content:
                     'Quốc Hùng, một nhân viên văn phòng, đã cải thiện khả năng giao tiếp tiếng Anh và giành được cơ hội thăng tiến trong công việc nhờ khóa học giao tiếp của Eng Land.',
             },
             {
                 id: 3,
                 title: 'Câu Chuyện Của Mai Linh',
-                image: 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462578825_906728744437315_6846387415196249365_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeG8Zve-9La-qrHMFTYb0pRoVUNlEf6Je2hVQ2UR_ol7aJ2paH0w4Ll0C6fL1BaIzN2JPSxW0-4TrNR_t_Flrang&_nc_ohc=FZlwj2bM8BYQ7kNvgFgxvEd&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGJIQNx8UqVlMg-zPaagrYi-kgecyEPB0O4tq_0zTUw3A&oe=677BE787',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMdBuvbsYu7WYAAUY2AqSQRGNESsYdkucDkQ&s',
                 content:
                     'Mai Linh, sinh viên, đã nhận được học bổng toàn phần tại một trường đại học ở Mỹ sau khi hoàn thành chương trình học tiếng Anh học thuật tại Eng Land.',
             },
             {
                 id: 4,
                 title: 'Câu Chuyện Của Nguyễn Tuấn',
+                image: 'https://img.freepik.com/free-photo/young-crazy-man-happy-expression_1194-5236.jpg',
                 content:
                     'Nguyễn Tuấn, một bác sĩ, đã nâng cao khả năng đọc hiểu tài liệu y khoa và tham gia các hội nghị quốc tế nhờ vào các bài học chuyên sâu của Eng Land.',
             },

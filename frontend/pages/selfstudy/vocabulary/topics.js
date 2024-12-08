@@ -13,13 +13,13 @@ const TopicPage = () => {
             title: 'Chủ đề gia đình',
             description: 'Học cách bày tỏ tình yêu, hỗ trợ và sự thấu hiểu trong gia đình bạn.',
             image: 'https://luyenthiielts7.com/wp-content/uploads/2020/10/Family-Silhouette-3.jpg',
-            link: '/topics/family',
+            link: 'topics/family',
         },
         {
             title: 'Chủ đề công việc',
             description: 'Nâng cao trình độ giao tiếp của bạn và đạt được thành công trong sự nghiệp.',
             image: 'https://d1vcqlflm6aitx.cloudfront.net/images/800x100p/1557364192-work_while_you_study_banner.webp',
-            link: '/topics/work',
+            link: 'topics/work',
         },
     ];
 
