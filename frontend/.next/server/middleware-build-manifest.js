@@ -10,11 +10,14 @@ self.__BUILD_MANIFEST = {
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
+<<<<<<< HEAD
     "/": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
+=======
+>>>>>>> 6843f890ec46d6512b6177635ce6ac3e6c1c3cd0
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -25,10 +28,29 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+<<<<<<< HEAD
     "/selfstudy/grammar": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/selfstudy/grammar.js"
+=======
+<<<<<<< HEAD
+    "/consult": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/consult.js"
+    ],
+    "/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/login.js"
+=======
+    "/communication": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/communication.js"
+>>>>>>> Long
+>>>>>>> 6843f890ec46d6512b6177635ce6ac3e6c1c3cd0
     ]
   },
   "ampFirstPages": []
