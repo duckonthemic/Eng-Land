@@ -20,6 +20,7 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+<<<<<<< HEAD
     "/consult": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -29,6 +30,12 @@ self.__BUILD_MANIFEST = {
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/login.js"
+=======
+    "/communication": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/communication.js"
+>>>>>>> Long
     ]
   },
   "ampFirstPages": []
