@@ -3,9 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/about": "pages/about.js",
-  "/test": "pages/test.js",
-  "/courses": "pages/courses.js",
-  "/selfstudy": "pages/selfstudy.js",
-  "/": "pages/index.js",
-  "/selfstudy/dictionary": "pages/selfstudy/dictionary.js"
+  "/login": "pages/login.js",
+  "/consult": "pages/consult.js"
 }

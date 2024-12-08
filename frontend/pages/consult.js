@@ -44,9 +44,9 @@ export default function Consult() {
   return (
     <div className="container mx-auto px-6 py-12 flex flex-col lg:flex-row lg:space-x-12">
       {/* Thông tin giới thiệu */}
-      <div className="bg-green-800 text-gray-100 p-8 rounded-2xl shadow-md lg:w-1/3 mb-8 lg:mb-0 animate-fade-in">
+      <div className="bg-gradient-to-br from-green-800 to-green-400 text-gray-100 p-8 rounded-2xl shadow-lg lg:w-1/3 mb-8 lg:mb-0 animate-fade-in">
         <h1 className="text-3xl font-semibold mb-4">Liên hệ với đội ngũ của chúng tôi!</h1>
-        <img src="/images/contact-hero.jpg" alt="Liên hệ" className="rounded-lg mb-4 w-full" />
+        <img src="/images/contact-hero.png" alt="Liên hệ" />
         <ul className="list-disc pl-5 space-y-2">
           <li>Thảo luận về nhu cầu học tiếng Anh của bạn.</li>
           <li>Tìm hiểu về các khóa học phù hợp với mục tiêu của bạn.</li>
