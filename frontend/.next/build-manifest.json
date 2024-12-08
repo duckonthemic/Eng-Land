@@ -13,14 +13,11 @@
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
-<<<<<<< HEAD
     "/": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
-=======
->>>>>>> 6843f890ec46d6512b6177635ce6ac3e6c1c3cd0
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -31,29 +28,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-<<<<<<< HEAD
-    "/selfstudy/grammar": [
+    "/fluency": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/selfstudy/grammar.js"
-=======
-<<<<<<< HEAD
-    "/consult": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/consult.js"
+      "static/chunks/pages/fluency.js"
     ],
-    "/login": [
+    "/mastery": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/login.js"
-=======
-    "/communication": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/communication.js"
->>>>>>> Long
->>>>>>> 6843f890ec46d6512b6177635ce6ac3e6c1c3cd0
+      "static/chunks/pages/mastery.js"
     ]
   },
   "ampFirstPages": []
