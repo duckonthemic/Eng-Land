@@ -13,9 +13,12 @@
     "@heroicons/react": "^2.2.0",
     "axios": "^0.24.0",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "next": "^15.0.4",
+    "next-auth": "^4.24.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-highlight-words": "^0.20.0",
     "react-markdown": "^9.0.1",
     "tailwindcss": "^3.0.0"
   },

@@ -33,26 +33,26 @@ const Home = () => {
             {[
               {
                 date: "NOV 7, 2024",
-                href: "/daily_communication",
+                href: "/selfstudy/common-sentences",
                 title: "Giao tiếp hằng ngày",
                 description: "Luyện nghe, nói câu tiếng Anh giao tiếp hằng ngày."
               },
               {
                 date: "AUG 22, 2024",
-                href: "/flashcard",
+                href: "/selfstudy/vocabulary/flashcards",
                 title: "Flashcard",
                 description:
                   "Công cụ học tập với hai mặt: một mặt có câu hỏi hoặc từ vựng, mặt kia có câu trả lời hoặc giải thích."
               },
               {
                 date: "JUN 19, 2024",
-                href: "/netdata-1.46.0",
+                href: "https://www.englishpage.com/irregularverbs/irregularverbs.html",
                 title: "Động từ bất quy tắc",
                 description: "Tất cả những động từ bất quy tắc trong tiếng Anh."
               },
               {
                 date: "JUN 03, 2024",
-                href: "/dynamic-configuration",
+                href: "/selfstudy/grammar",
                 title: "Ngữ pháp",
                 description: "Danh sách tổng hợp những cấu trúc câu trong tiếng Anh."
               }
