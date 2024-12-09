@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Lesson = require('../models/Lesson');
 
-// Lấy tất cả bài học
 router.get('/', async (req, res) => {
   try {
     const lessons = await Lesson.find();
@@ -12,12 +11,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Lấy bài học theo ID
 router.get('/:id', getLesson, (req, res) => {
   res.json(res.lesson);
 });
 
-// Thêm bài học mới
 router.post('/', async (req, res) => {
   const lesson = new Lesson({
     title: req.body.title,
@@ -33,7 +30,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Middleware để lấy bài học theo ID
 async function getLesson(req, res, next) {
   let lesson;
   try {
