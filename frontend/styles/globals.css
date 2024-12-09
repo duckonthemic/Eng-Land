@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Thêm các lớp tùy chỉnh */
 .perspective {
   perspective: 1000px;
 }
