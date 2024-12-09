@@ -13,7 +13,6 @@ app.use(express.json());
 const checkoutRoutes = require('./routes/checkout');
 app.use('/api/checkout', checkoutRoutes);
 
-// Cho phép truy cập file ảnh trong thư mục uploads
 app.use('/uploads', express.static('uploads'));
 
 mongoose.connect(process.env.MONGODB_URI,{
