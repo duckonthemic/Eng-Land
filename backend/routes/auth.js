@@ -4,7 +4,6 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// Đăng ký (Signup)
 router.post('/signup', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   try {
@@ -27,7 +26,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// Đăng nhập (Login)
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
