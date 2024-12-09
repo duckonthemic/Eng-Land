@@ -7,10 +7,9 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
 
-// Cấu hình multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // thư mục uploads
+    cb(null, 'uploads/'); 
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random()*1E9);
@@ -19,7 +18,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Lấy thông tin user
 router.get('/', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select('-password');
@@ -30,7 +28,6 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-// Đổi mật khẩu
 router.put('/password', verifyToken, async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   try {
@@ -39,7 +36,7 @@ router.put('/password', verifyToken, async (req, res) => {
     const isMatch = await bcrypt.compare(oldPassword, user.password);
     if(!isMatch) return res.status(400).json({ message:'Mật khẩu cũ không đúng' });
 
-    user.password = newPassword; // sẽ được hash khi save
+    user.password = newPassword; 
     await user.save();
     res.json({ message:'Đổi mật khẩu thành công' });
   } catch (err) {
@@ -47,7 +44,6 @@ router.put('/password', verifyToken, async (req, res) => {
   }
 });
 
-// Đổi avatar
 router.put('/avatar', verifyToken, upload.single('avatar'), async (req, res) => {
   try {
     const user = await User.findById(req.userId);
@@ -57,7 +53,6 @@ router.put('/avatar', verifyToken, upload.single('avatar'), async (req, res) => 
       return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    // user.avatar sẽ chứa đường dẫn tương đối đến ảnh
     user.avatar = `/uploads/${req.file.filename}`;
     await user.save();
     res.json({ message:'Avatar updated', avatar: user.avatar });
@@ -66,7 +61,6 @@ router.put('/avatar', verifyToken, upload.single('avatar'), async (req, res) => 
   }
 });
 
-// Lấy các khóa học đã mua
 router.get('/courses', verifyToken, async (req,res) => {
   try {
     const user = await User.findById(req.userId).populate('coursesBought');
