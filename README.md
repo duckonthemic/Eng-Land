@@ -6,10 +6,11 @@ Eng Land là một nền tảng học tiếng Anh trực tuyến giúp người 
 
 ### Frontend
 
-Phần frontend của dự án sử dụng **Next.js** với các tính năng như:
+Phần frontend của dự án sử dụng **Next.js**,**Next.js** với các tính năng như:
 - **SSR (Server-Side Rendering)** cho việc tối ưu hóa SEO.
 - **TailwindCSS** để xây dựng giao diện đẹp mắt và responsive.
 - **Axios** để gọi API từ backend.
+
 
 ### Backend
 
