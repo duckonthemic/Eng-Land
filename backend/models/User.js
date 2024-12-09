@@ -1,4 +1,3 @@
-// models/User.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -8,7 +7,6 @@ const UserSchema = new mongoose.Schema({
   email:     { type: String, required: true, unique: true },
   password:  { type: String, required: true },
   avatar:    { type: String },
-  // Danh sách khóa học đã mua (có thể lưu thông tin ID, title, price)
   coursesBought: [
     {
       id: String,
@@ -16,7 +14,6 @@ const UserSchema = new mongoose.Schema({
       price: Number
     }
   ],
-  // Danh sách đơn hàng (orders)
   orders: [
     {
       id: String,
@@ -33,7 +30,6 @@ const UserSchema = new mongoose.Schema({
   ]
 }, { timestamps: true });
 
-// Mã hóa mật khẩu trước khi lưu
 UserSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
   const salt = await bcrypt.genSalt(10);
