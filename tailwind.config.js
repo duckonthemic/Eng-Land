@@ -1,6 +1,5 @@
-// tailwind.config.js
 module.exports = {
-  darkMode: 'class', // Sử dụng phương thức 'class' cho Dark Mode
+  darkMode: 'class', 
   theme: {
     extend: {
       colors: {
