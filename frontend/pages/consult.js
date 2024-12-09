@@ -1,4 +1,3 @@
-// pages/consult.js
 "use client";
 
 import { useState } from 'react';
