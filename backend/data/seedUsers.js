@@ -1,4 +1,3 @@
-// seedUsers.js
 require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('../models/User');
@@ -12,17 +11,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 async function seedUsers() {
   try {
-    // Xoá dữ liệu cũ trong collection User
     await User.deleteMany({});
     console.log('Đã xoá dữ liệu cũ trong User collection');
 
-    // Dữ liệu giả định
     const usersData = [
       {
         firstName: 'John',
         lastName: 'Doe',
         email: 'johndoe@example.com',
-        password: '123456' // Mật khẩu sẽ được hash khi save
+        password: '123456' 
       },
       {
         firstName: 'Jane',
@@ -32,10 +29,9 @@ async function seedUsers() {
       }
     ];
 
-    // Dùng vòng lặp để tạo và save từng user, giúp pre('save') hook được kích hoạt
     for (const u of usersData) {
       const user = new User(u);
-      await user.save(); // Tại đây password sẽ được mã hóa
+      await user.save(); 
     }
 
     console.log('Đã thêm dữ liệu user giả định thành công!');
