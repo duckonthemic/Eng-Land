@@ -1,5 +1,3 @@
-// components/GrammarExample.js
-
 export default function GrammarExample({ example }) {
     return (
       <li className="mb-4">

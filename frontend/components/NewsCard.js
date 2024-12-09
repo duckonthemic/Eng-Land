@@ -1,4 +1,3 @@
-// components/NewsCard.js
 import React from 'react';
 
 const NewsCard = ({ title, description, year, score, imageUrl, link }) => {
@@ -12,7 +11,6 @@ const NewsCard = ({ title, description, year, score, imageUrl, link }) => {
   );
 };
 
-// Styles for NewsCard
 const styles = {
   card: {
     background: '#e0f7fa',

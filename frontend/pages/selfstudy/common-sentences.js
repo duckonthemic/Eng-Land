@@ -1,27 +1,30 @@
-// pages/selfstudy/common-sentences.js
 "use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import commonSentences from '../../data/commonSentences';
+import { useState } from "react";
+import Link from "next/link";
+import commonSentences from "../../data/commonSentences";
 
 export default function CommonSentences() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Lọc các câu dựa trên từ khóa tìm kiếm
-  const filteredSentences = commonSentences.filter(sentence =>
-    sentence.english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    sentence.vietnamese.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredSentences = commonSentences.filter(
+    (sentence) =>
+      sentence.english.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      sentence.vietnamese.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <main className="min-h-screen bg-white py-12">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">Các Mẫu Câu Giao Tiếp Thông Dụng</h1>
+        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">
+          Các Mẫu Câu Giao Tiếp Thông Dụng
+        </h1>
 
         {/* Tìm kiếm câu giao tiếp */}
         <div className="flex justify-center mb-8 space-x-4">
-          <label htmlFor="word" className="sr-only">Tìm kiếm câu giao tiếp</label>
+          <label htmlFor="word" className="sr-only">
+            Tìm kiếm câu giao tiếp
+          </label>
           <input
             type="text"
             id="word"
@@ -33,7 +36,7 @@ export default function CommonSentences() {
           />
           {searchTerm && (
             <button
-              onClick={() => setSearchTerm('')}
+              onClick={() => setSearchTerm("")}
               className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
             >
               Xóa
@@ -44,10 +47,15 @@ export default function CommonSentences() {
         {/* Hiển thị các câu giao tiếp */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredSentences.length > 0 ? (
-            filteredSentences.map(sentence => (
-              <div key={sentence.id} className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            filteredSentences.map((sentence) => (
+              <div
+                key={sentence.id}
+                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              >
                 <div className="p-6">
-                  <h2 className="text-xl font-semibold mb-2 text-neutral-dark">{sentence.category}</h2>
+                  <h2 className="text-xl font-semibold mb-2 text-neutral-dark">
+                    {sentence.category}
+                  </h2>
                   <p className="text-lg text-neutral-dark mb-4">
                     <strong>English:</strong> {sentence.english}
                   </p>
@@ -63,7 +71,9 @@ export default function CommonSentences() {
               </div>
             ))
           ) : (
-            <p className="text-center text-neutral-dark col-span-full">Không tìm thấy câu giao tiếp nào phù hợp.</p>
+            <p className="text-center text-neutral-dark col-span-full">
+              Không tìm thấy câu giao tiếp nào phù hợp.
+            </p>
           )}
         </div>
       </div>

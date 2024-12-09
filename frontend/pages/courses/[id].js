@@ -1,22 +1,21 @@
-// pages/courses/[id].js
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Disclosure } from '@headlessui/react';
-// Cập nhật đường dẫn nhập biểu tượng cho Heroicons v2
-import { ChevronUpIcon } from '@heroicons/react/24/solid';
-import coursesData from '../../data/courses';
+import { useRouter } from "next/router";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/24/solid";
+import coursesData from "../../data/courses";
 
 export default function CourseDetail() {
   const router = useRouter();
   const { id } = router.query;
 
-  // Tìm khóa học theo ID
   const course = coursesData.find((course) => course.id === parseInt(id));
 
   if (!course) {
-    return <p className="text-center text-gray-700">Không tìm thấy khóa học.</p>;
+    return (
+      <p className="text-center text-gray-700">Không tìm thấy khóa học.</p>
+    );
   }
 
   return (
@@ -54,7 +53,7 @@ export default function CourseDetail() {
 
           {/* Course Price */}
           <p className="text-3xl font-bold text-primary-light-green mb-4">
-            {course.price.toLocaleString('vi-VN')} VND
+            {course.price.toLocaleString("vi-VN")} VND
           </p>
 
           {/* Course Meta */}
@@ -85,7 +84,7 @@ export default function CourseDetail() {
                     <span>Lộ trình khóa học</span>
                     <ChevronUpIcon
                       className={`${
-                        open ? 'transform rotate-180' : ''
+                        open ? "transform rotate-180" : ""
                       } w-5 h-5 text-primary-light-green`}
                     />
                   </Disclosure.Button>
@@ -110,7 +109,7 @@ export default function CourseDetail() {
                     <span>Giáo viên giảng dạy</span>
                     <ChevronUpIcon
                       className={`${
-                        open ? 'transform rotate-180' : ''
+                        open ? "transform rotate-180" : ""
                       } w-5 h-5 text-primary-light-green`}
                     />
                   </Disclosure.Button>

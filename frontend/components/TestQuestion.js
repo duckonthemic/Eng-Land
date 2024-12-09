@@ -1,5 +1,3 @@
-// components/TestQuestion.js
-
 import { useState } from 'react';
 
 const TestQuestion = ({ questionData, userAnswers, setUserAnswers, isSubmitted }) => {

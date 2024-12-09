@@ -13,18 +13,17 @@ const Home = () => {
       <div className="container mx-auto px-6 py-8 bg-white min-h-screen">
         {/* Header Banner */}
         <div className="relative w-full max-w-screen-lg mx-auto overflow-hidden">
-  <Image
-    src="/images/banner.jpg"
-    alt="Khám phá thế giới cùng EngLand"
-    layout="intrinsic" // Giữ nguyên tỷ lệ gốc của ảnh
-    width={1024} // Kích thước gốc chiều rộng của ảnh
-    height={455} // Kích thước gốc chiều cao của ảnh
-    className="rounded-lg shadow-xl"
-    priority // Tải ảnh nhanh hơn để hiển thị rõ
-    quality={100} // Hiển thị ảnh với chất lượng cao
-  />
-</div>
-
+          <Image
+            src="/images/banner.jpg"
+            alt="Khám phá thế giới cùng EngLand"
+            layout="intrinsic"
+            width={1024}
+            height={455}
+            className="rounded-lg shadow-xl"
+            priority
+            quality={100}
+          />
+        </div>
 
         {/* Phần Timeline */}
         <section className="mt-16">

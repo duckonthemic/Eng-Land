@@ -1,5 +1,3 @@
-// components/Flashcard.js
-
 import { useState } from 'react';
 
 export default function Flashcard({ question, answer, onMark, status, type, image, audio }) {
@@ -11,7 +9,7 @@ export default function Flashcard({ question, answer, onMark, status, type, imag
 
   const handleMark = (mark) => {
     onMark(mark);
-    setFlipped(false); // Tự động lật thẻ lại sau khi đánh dấu
+    setFlipped(false);
   };
 
   return (
@@ -40,7 +38,7 @@ export default function Flashcard({ question, answer, onMark, status, type, imag
           <div className="flex space-x-4">
             <button
               onClick={(e) => {
-                e.stopPropagation(); // Ngăn không cho lật thẻ khi nhấp vào nút
+                e.stopPropagation(); 
                 handleMark('known');
               }}
               className="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded"

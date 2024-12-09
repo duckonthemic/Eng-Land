@@ -1,5 +1,3 @@
-// data/studyGroups.js
-
 const studyGroups = [
     {
       id: 1,

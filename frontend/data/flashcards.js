@@ -1,7 +1,5 @@
-// data/flashcards.js
-
 const flashcards = [
-  // **Tenses (Các thì)**
+  // **Tenses**
   {
     id: 1,
     question: 'What is the past simple form of "go"?',
@@ -29,7 +27,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Vocabulary (Từ vựng)**
+  // **Vocab**
   {
     id: 4,
     question: 'Define "ubiquitous".',
@@ -84,7 +82,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Common Phrases (Cụm từ thông dụng)**
+  // **Common**
   {
     id: 10,
     question: 'What does "Break a leg" mean?',
@@ -112,7 +110,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Modal Verbs (Động từ mạo từ)**
+  // **Modal**
   {
     id: 13,
     question: 'Translate to English: "Bạn có thể giúp tôi không?"',
@@ -140,7 +138,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Conditionals (Câu điều kiện)**
+  // **Condi**
   {
     id: 16,
     question: 'What is the structure of Type 1 Conditional?',
@@ -168,7 +166,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Passive Voice (Câu bị động)**
+  // **Passive**
   {
     id: 19,
     question: 'Convert to passive: "The chef cooks the meal."',
@@ -196,7 +194,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Prepositions (Giới từ)**
+  // **Prepositions**
   {
     id: 22,
     question: 'Fill in the blank: "She is good ___ mathematics."',
@@ -215,7 +213,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Articles (Mạo từ)**
+  // **Articles**
   {
     id: 24,
     question: 'Fill in the blank: "I have ___ apple."',
@@ -234,7 +232,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Adjectives and Adverbs (Tính từ và trạng từ)**
+  // **Adj, adv**
   {
     id: 26,
     question: 'What is the adverb form of "quick"?',
@@ -253,7 +251,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Phrasal Verbs (Động từ ghép)**
+  // **Phrasal Verbs**
   {
     id: 28,
     question: 'What does "look after" mean?',
@@ -272,7 +270,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Idioms (Thành ngữ)**
+  // **Idioms**
   {
     id: 30,
     question: 'What does "Bite the bullet" mean?',
@@ -291,7 +289,7 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // **Miscellaneous (Đa dạng)**
+  // **Miscellaneous**
   {
     id: 32,
     question: 'What is the plural form of "mouse"?',
@@ -337,7 +335,6 @@ const flashcards = [
     lastReviewed: null,
     reviewInterval: 1,
   },
-  // Thêm nhiều flashcards khác tại đây
 ];
 
 export default flashcards;

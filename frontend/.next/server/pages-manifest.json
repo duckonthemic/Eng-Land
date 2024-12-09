@@ -2,12 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/articles/[id]": "pages/articles/[id].js",
-  "/news/[id]": "pages/news/[id].js",
+  "/selfstudy": "pages/selfstudy.js",
   "/news": "pages/news.js",
-  "/about": "pages/about.js",
-  "/signup": "pages/signup.js",
+  "/news/[id]": "pages/news/[id].js",
   "/consult": "pages/consult.js",
+  "/test": "pages/test.js",
   "/login": "pages/login.js",
-  "/forgotpassword": "pages/forgotpassword.js"
+  "/": "pages/index.js",
+  "/selfstudy/study-together": "pages/selfstudy/study-together.js"
 }

@@ -10,6 +10,11 @@ self.__BUILD_MANIFEST = {
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -20,25 +25,10 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/about": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/about.js"
-    ],
-    "/articles/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/articles/[id].js"
-    ],
     "/consult": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/consult.js"
-    ],
-    "/forgotpassword": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/forgotpassword.js"
     ],
     "/login": [
       "static/chunks/webpack.js",
@@ -50,10 +40,25 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/news.js"
     ],
-    "/signup": [
+    "/news/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/signup.js"
+      "static/chunks/pages/news/[id].js"
+    ],
+    "/selfstudy": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy.js"
+    ],
+    "/selfstudy/study-together": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/selfstudy/study-together.js"
+    ],
+    "/test": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/test.js"
     ]
   },
   "ampFirstPages": []

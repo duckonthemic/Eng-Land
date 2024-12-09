@@ -18,5 +18,4 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET
     })
   ],
-  // ...các cấu hình khác
 });

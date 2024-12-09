@@ -1,4 +1,3 @@
-// components/InputField.js
 "use client";
 
 export default function InputField({
@@ -10,7 +9,7 @@ export default function InputField({
   onChange,
   placeholder,
   required = false,
-  children, // Dùng cho select options
+  children, 
 }) {
   return (
     <div className="mb-4">

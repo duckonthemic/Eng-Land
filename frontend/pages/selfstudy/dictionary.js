@@ -1,12 +1,11 @@
-// pages/dictionary.js
 "use client";
 
-import { useState } from 'react';
-import axios from 'axios';
-import Link from 'next/link';
+import { useState } from "react";
+import axios from "axios";
+import Link from "next/link";
 
 export default function Dictionary() {
-  const [word, setWord] = useState('');
+  const [word, setWord] = useState("");
   const [definition, setDefinition] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -20,13 +19,15 @@ export default function Dictionary() {
     setDefinition(null);
 
     try {
-      const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-      setDefinition(response.data[0]); // Lấy kết quả từ API
+      const response = await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+      setDefinition(response.data[0]); 
     } catch (err) {
       if (err.response && err.response.status === 404) {
-        setError('Không tìm thấy từ này trong từ điển.');
+        setError("Không tìm thấy từ này trong từ điển.");
       } else {
-        setError('Đã xảy ra lỗi. Vui lòng thử lại sau.');
+        setError("Đã xảy ra lỗi. Vui lòng thử lại sau.");
       }
     } finally {
       setLoading(false);
@@ -34,7 +35,7 @@ export default function Dictionary() {
   };
 
   const handleClear = () => {
-    setWord('');
+    setWord("");
     setDefinition(null);
     setError(null);
   };
@@ -42,11 +43,18 @@ export default function Dictionary() {
   return (
     <main className="min-h-screen bg-white py-12">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">Từ Điển Anh-Việt</h1>
+        <h1 className="text-5xl font-bold mb-8 text-primary-light-green text-center">
+          Từ Điển Anh - Anh 
+        </h1>
 
         {/* Tìm kiếm từ */}
-        <form onSubmit={handleSearch} className="flex flex-col items-center mb-8">
-          <label htmlFor="word" className="sr-only">Tìm kiếm từ</label>
+        <form
+          onSubmit={handleSearch}
+          className="flex flex-col items-center mb-8"
+        >
+          <label htmlFor="word" className="sr-only">
+            Tìm kiếm từ
+          </label>
           <input
             type="text"
             id="word"
@@ -62,7 +70,7 @@ export default function Dictionary() {
               disabled={loading}
               className="bg-primary-light-green hover:bg-primary-dark-green text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Đang tìm kiếm...' : 'Tìm Kiếm'}
+              {loading ? "Đang tìm kiếm..." : "Tìm Kiếm"}
             </button>
             <button
               type="button"
@@ -84,7 +92,8 @@ export default function Dictionary() {
         {definition && (
           <div className="bg-white shadow-lg rounded-lg p-6">
             <h2 className="text-2xl font-semibold mb-4 text-neutral-dark">
-              Kết quả tìm kiếm cho: <span className="text-primary-light-green">{word}</span>
+              Kết quả tìm kiếm cho:{" "}
+              <span className="text-primary-light-green">{word}</span>
             </h2>
 
             {definition.phonetic && (

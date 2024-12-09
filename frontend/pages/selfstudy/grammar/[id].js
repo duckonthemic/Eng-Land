@@ -1,4 +1,3 @@
-// pages/selfstudy/grammar/[id].js
 "use client";
 
 import { useRouter } from 'next/router';

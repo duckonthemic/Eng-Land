@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function PaymentPage() {
   const router = useRouter();
   const [cart, setCart] = useState([]);
-  const [fullName, setFullName] = useState('');
-  const [bankName, setBankName] = useState('Vietcombank');
-  const [accountNumber, setAccountNumber] = useState('');
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const [fullName, setFullName] = useState("");
+  const [bankName, setBankName] = useState("Vietcombank");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Danh sách ngân hàng
-  const banks = ['Vietcombank', 'Agribank', 'BIDV', 'ShinhanBank', 'ACB', 'DongABank'];
+  const banks = [
+    "Vietcombank",
+    "Agribank",
+    "BIDV",
+    "ShinhanBank",
+    "ACB",
+    "DongABank",
+  ];
 
   useEffect(() => {
-    // Lấy cart từ localStorage
-    if (typeof window !== 'undefined') {
-      const cartStr = localStorage.getItem('cart');
+    if (typeof window !== "undefined") {
+      const cartStr = localStorage.getItem("cart");
       if (cartStr) {
         setCart(JSON.parse(cartStr));
       }
@@ -27,89 +32,84 @@ export default function PaymentPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setMessage('');
+    setError("");
+    setMessage("");
     setLoading(true);
-    const token = localStorage.getItem('token');
-    if(!token) {
-      setError('Vui lòng đăng nhập trước khi thanh toán.');
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("Vui lòng đăng nhập trước khi thanh toán.");
       setLoading(false);
       return;
     }
-    if(cart.length===0) {
-      setError('Giỏ hàng rỗng.');
+    if (cart.length === 0) {
+      setError("Giỏ hàng rỗng.");
       setLoading(false);
       return;
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/checkout', {
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-          'Authorization': `Bearer ${token}`
+      const res = await fetch("http://localhost:5000/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           courses: cart,
           fullName,
           bankName,
-          accountNumber
-        })
+          accountNumber,
+        }),
       });
       const data = await res.json();
-      if(!res.ok) {
-        setError(data.message||'Thanh toán thất bại');
+      if (!res.ok) {
+        setError(data.message || "Thanh toán thất bại");
       } else {
-        setMessage('Thanh toán thành công!');
-        // Xóa giỏ hàng
-        localStorage.removeItem('cart');
-        // Cập nhật user info nếu trả về
-        if(data.user) {
-          localStorage.setItem('user', JSON.stringify(data.user));
+        setMessage("Thanh toán thành công!");
+        localStorage.removeItem("cart");
+        if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
         }
-        // Chuyển hướng về /user sau 2s
         setTimeout(() => {
-          router.push('/user');
-        },2000);
+          router.push("/user");
+        }, 2000);
       }
-    } catch(err) {
+    } catch (err) {
       console.log(err);
-      setError('Lỗi kết nối máy chủ');
+      setError("Lỗi kết nối máy chủ");
     } finally {
       setLoading(false);
     }
   };
 
-  const totalPrice = cart.reduce((sum, c) => sum+(c.price||0),0);
+  const totalPrice = cart.reduce((sum, c) => sum + (c.price || 0), 0);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <div className="max-w-md mx-auto bg-white p-8 shadow-md rounded-md">
-        <h1 className="text-2xl font-bold mb-4">Thông tin thanh toán</h1>
-        {error && <p className="text-red-500 font-semibold mb-4">{error}</p>}
-        {message && <p className="text-green-500 font-semibold mb-4">{message}</p>}
+    <div className="min-h-screen bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center p-6">
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-8">
+        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+          Thông Tin Thanh Toán
+        </h1>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {message && <p className="text-green-500 text-center mb-4">{message}</p>}
 
-        {/* Thông tin thanh toán ABCXYZ */}
-        <div className="mb-4">
-          <p className="mb-2 font-semibold text-gray-800">Thông tin thanh toán: ABCXYZ</p>
-          <p className="mb-2 font-semibold">STK: 04412312342</p>
-          <p className="mb-2 font-semibold">Ngân hàng Vietcombank</p>          
+        <div className="mb-6 bg-green-100 p-4 rounded">
+          <p className="font-semibold text-green-700">Thông tin thanh toán: ABCXYZ</p>
+          <p className="font-semibold text-green-700">STK: 04412312342</p>
+          <p className="font-semibold text-green-700">Ngân hàng Vietcombank</p>
         </div>
 
-        {cart.length === 0 && (
-          <p className="text-gray-600 mb-4">Giỏ hàng rỗng</p>
-        )}
-
-        {cart.length > 0 && (
-          <div className="mb-4">
-            <h2 className="font-bold mb-2">Khóa học trong giỏ:</h2>
-            <ul className="list-disc list-inside mb-2">
-              {cart.map(c=>(
-                <li key={c.id} className="mb-2 flex items-center space-x-2">
-                  <div className="w-16 h-16 flex-shrink-0 relative">
-                    {/* Hiển thị hình ảnh khóa học */}
+        {cart.length === 0 ? (
+          <p className="text-center text-gray-600 mb-6">Giỏ hàng rỗng</p>
+        ) : (
+          <div className="mb-6">
+            <h2 className="text-xl font-bold mb-4">Khóa học trong giỏ:</h2>
+            <ul className="space-y-4">
+              {cart.map((c) => (
+                <li key={c.id} className="flex items-center bg-green-50 p-4 rounded-lg shadow">
+                  <div className="w-20 h-20 relative mr-4">
                     <Image
-                      src={c.image || '/image/course-default.jpg'}
+                      src={c.image || "/image/course-default.jpg"}
                       alt={c.title}
                       layout="fill"
                       objectFit="cover"
@@ -117,63 +117,65 @@ export default function PaymentPage() {
                     />
                   </div>
                   <div>
-                    <p className="font-bold">{c.title}</p>
-                    <p className="text-sm text-gray-600">{c.price} VND</p>
+                    <h3 className="text-lg font-semibold text-green-800">{c.title}</h3>
+                    <p className="text-green-600">{c.price.toLocaleString()} VND</p>
                   </div>
                 </li>
               ))}
             </ul>
-            <p className="font-bold">Tổng: {totalPrice} VND</p>
+            <div className="mt-4 text-right">
+              <span className="text-xl font-bold text-green-800">Tổng: {totalPrice.toLocaleString()} VND</span>
+            </div>
           </div>
         )}
 
-        {/* Form nhập thông tin thanh toán */}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-1 font-semibold">Họ và Tên</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-green-700 font-medium mb-2">Họ và Tên</label>
             <input
               type="text"
               value={fullName}
-              onChange={(e)=>setFullName(e.target.value)}
+              onChange={(e) => setFullName(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              className="w-full px-4 py-3 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block mb-1 font-semibold">Ngân hàng</label>
+          <div>
+            <label className="block text-green-700 font-medium mb-2">Ngân hàng</label>
             <select
               value={bankName}
-              onChange={(e)=>setBankName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              onChange={(e) => setBankName(e.target.value)}
+              className="w-full px-4 py-3 border border-green-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
             >
-              {banks.map(bank=>(
-                <option key={bank} value={bank}>{bank}</option>
+              {banks.map((bank) => (
+                <option key={bank} value={bank}>
+                  {bank}
+                </option>
               ))}
             </select>
           </div>
 
-          <div className="mb-4">
-            <label className="block mb-1 font-semibold">Số Tài Khoản</label>
+          <div>
+            <label className="block text-green-700 font-medium mb-2">Số Tài Khoản</label>
             <input
               type="text"
               value={accountNumber}
-              onChange={(e)=>setAccountNumber(e.target.value)}
+              onChange={(e) => setAccountNumber(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              className="w-full px-4 py-3 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
-          {/* Hiển thị mã QR */}
-          <div className="mb-4 text-center">
-            <p className="mb-2 font-semibold">Quét mã QR để thanh toán</p>
-            <div className="inline-block relative w-40 h-40">
+          <div className="text-center">
+            <p className="text-green-700 font-medium mb-2">Quét mã QR để thanh toán</p>
+            <div className="inline-block w-40 h-40 relative mx-auto">
               <Image
                 src="/images/qrpayment.png"
                 alt="QR Code Thanh Toán"
                 layout="fill"
                 objectFit="cover"
-                className="rounded"
+                className="rounded-lg shadow"
               />
             </div>
           </div>
@@ -181,9 +183,11 @@ export default function PaymentPage() {
           <button
             type="submit"
             disabled={loading}
-            className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition ${loading?'opacity-50 cursor-not-allowed':''}`}
+            className={`w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            {loading ? 'Đang xử lý...' : 'Xác nhận thanh toán'}
+            {loading ? "Đang xử lý..." : "Xác nhận thanh toán"}
           </button>
         </form>
       </div>

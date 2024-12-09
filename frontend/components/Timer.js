@@ -1,9 +1,7 @@
-// components/Timer.js
-
 import { useEffect, useState } from 'react';
 
 const Timer = ({ duration, onTimeUp }) => {
-  const [timeLeft, setTimeLeft] = useState(duration); // time in seconds
+  const [timeLeft, setTimeLeft] = useState(duration); 
 
   useEffect(() => {
     if (timeLeft <= 0) {

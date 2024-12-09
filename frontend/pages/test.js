@@ -1,20 +1,18 @@
-// pages/test.js
-
-import { useState, useCallback, useEffect } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { ChevronUpIcon } from '@heroicons/react/24/solid';
-import { Disclosure } from '@headlessui/react';
-import TestQuestion from '../components/TestQuestion';
-import Timer from '../components/Timer';
-import testQuestions from '../data/testQuestions';
+import { useState, useCallback, useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { ChevronUpIcon } from "@heroicons/react/24/solid";
+import { Disclosure } from "@headlessui/react";
+import TestQuestion from "../components/TestQuestion";
+import Timer from "../components/Timer";
+import testQuestions from "../data/testQuestions";
 
 export default function TestPage() {
   const [userAnswers, setUserAnswers] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const totalQuestions = 10;
-  const testDuration = 600; // 10 phút = 600 giây
+  const testDuration = 900; //
 
   useEffect(() => {
     selectRandomQuestions();
@@ -68,7 +66,9 @@ export default function TestPage() {
             Bài Kiểm Tra Tiếng Anh
           </h1>
 
-          {!isSubmitted && <Timer duration={testDuration} onTimeUp={handleTimeUp} />}
+          {!isSubmitted && (
+            <Timer duration={testDuration} onTimeUp={handleTimeUp} />
+          )}
 
           {!isSubmitted ? (
             <>
@@ -104,8 +104,11 @@ export default function TestPage() {
               <div className="p-6 bg-white rounded-lg shadow-md text-center mt-6">
                 <h2 className="text-3xl font-semibold mb-4">Kết Quả của Bạn</h2>
                 <p className="text-xl mb-4">
-                  Bạn đã trả lời đúng{' '}
-                  <span className="font-bold text-green-500">{correctAnswers}</span> trong tổng số{' '}
+                  Bạn đã trả lời đúng{" "}
+                  <span className="font-bold text-green-500">
+                    {correctAnswers}
+                  </span>{" "}
+                  trong tổng số{" "}
                   <span className="font-bold text-blue-500">{tq}</span> câu hỏi.
                 </p>
                 <button
@@ -134,15 +137,16 @@ export default function TestPage() {
                     <span>Chi tiết về bài kiểm tra</span>
                     <ChevronUpIcon
                       className={`${
-                        open ? 'transform rotate-180' : ''
+                        open ? "transform rotate-180" : ""
                       } w-5 h-5 text-primary-light-green`}
                     />
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-700">
                     <p>
-                      Bài kiểm tra này bao gồm {totalQuestions} câu hỏi về ngữ pháp và từ vựng
-                      tiếng Anh nhằm đánh giá kiến thức của bạn. Bạn có {testDuration / 60} phút để
-                      hoàn thành bài kiểm tra. Hãy trả lời hết các câu hỏi và nhấp vào "Nộp Bài" để
+                      Bài kiểm tra này bao gồm {totalQuestions} câu hỏi về ngữ
+                      pháp và từ vựng tiếng Anh nhằm đánh giá kiến thức của bạn.
+                      Bạn có {testDuration / 60} phút để hoàn thành bài kiểm
+                      tra. Hãy trả lời hết các câu hỏi và nhấp vào "Nộp Bài" để
                       xem kết quả.
                     </p>
                   </Disclosure.Panel>

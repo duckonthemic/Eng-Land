@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import IconLightMode from './IconLightMode'; // Thay thế bằng biểu tượng của bạn cho chế độ sáng
-import IconDarkMode from './IconDarkMode'; // Thay thế bằng biểu tượng của bạn cho chế độ tối
+import IconLightMode from './IconLightMode'; 
+import IconDarkMode from './IconDarkMode'; 
 import styles from './styles.module.css';
 
 export default function ColorModeToggle() {

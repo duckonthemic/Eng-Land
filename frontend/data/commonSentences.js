@@ -1,5 +1,3 @@
-// data/commonSentences.js
-
 const commonSentences = [
     {
       id: 1,

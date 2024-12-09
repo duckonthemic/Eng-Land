@@ -1,5 +1,3 @@
-// data/grammarTopics.js
-
 const grammarTopics = [
     {
       id: 1,
@@ -480,7 +478,6 @@ const grammarTopics = [
         },
       ],
     },
-    // Thêm nhiều chủ đề ngữ pháp khác tại đây
   ];
   
   export default grammarTopics;

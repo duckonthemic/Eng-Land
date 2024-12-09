@@ -1,30 +1,35 @@
-// pages/selfstudy/create-group.js
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CreateGroup() {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [meetingTime, setMeetingTime] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [meetingTime, setMeetingTime] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ở đây, bạn có thể thêm logic để gửi dữ liệu tới backend hoặc cập nhật dữ liệu nhóm học
     alert(`Nhóm học "${name}" đã được tạo!`);
-    // Sau khi tạo nhóm, điều hướng về trang "Học Cùng Nhau"
-    router.push('/selfstudy/study-together');
+
+    router.push("/selfstudy/study-together");
   };
 
   return (
     <main className="min-h-screen bg-white py-12">
       <div className="container mx-auto px-6 max-w-md">
-        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">Tạo Nhóm Học Mới</h1>
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-6">
+        <h1 className="text-4xl font-bold mb-8 text-primary-light-green text-center">
+          Tạo Nhóm Học Mới
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-lg rounded-lg p-6"
+        >
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 mb-2">Tên Nhóm Học</label>
+            <label htmlFor="name" className="block text-gray-700 mb-2">
+              Tên Nhóm Học
+            </label>
             <input
               type="text"
               id="name"
@@ -36,7 +41,9 @@ export default function CreateGroup() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="description" className="block text-gray-700 mb-2">Mô Tả Nhóm Học</label>
+            <label htmlFor="description" className="block text-gray-700 mb-2">
+              Mô Tả Nhóm Học
+            </label>
             <textarea
               id="description"
               name="description"
@@ -49,7 +56,9 @@ export default function CreateGroup() {
             ></textarea>
           </div>
           <div className="mb-4">
-            <label htmlFor="meetingTime" className="block text-gray-700 mb-2">Thời Gian Họp</label>
+            <label htmlFor="meetingTime" className="block text-gray-700 mb-2">
+              Thời Gian Họp
+            </label>
             <input
               type="text"
               id="meetingTime"
