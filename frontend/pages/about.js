@@ -1,4 +1,3 @@
-// pages/about.js
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -127,7 +126,7 @@ export default function About() {
             <div className="space-y-8">
               <div className="flex items-center space-x-4">
                 <Image
-                  src="/images/student1.jpg" // Thay bằng hình ảnh thực tế
+                  src="/images/student1.jpg" 
                   alt="Student 1"
                   width={80}
                   height={80}
@@ -145,7 +144,7 @@ export default function About() {
               
               <div className="flex items-center space-x-4">
                 <Image
-                  src="/images/student2.png" // Thay bằng hình ảnh thực tế
+                  src="/images/student2.png" 
                   alt="Student 2"
                   width={80}
                   height={80}
@@ -163,7 +162,7 @@ export default function About() {
               
               <div className="flex items-center space-x-4">
                 <Image
-                  src="/images/student3.jpg" // Thay bằng hình ảnh thực tế
+                  src="/images/student3.jpg" 
                   alt="Student 3"
                   width={80}
                   height={80}
